@@ -1,0 +1,129 @@
+.topDisplay {
+  display: flex;
+  flex-grow: 0.55;
+  flex-flow: row wrap;
+  border: 2px solid white;
+  align-items: center;
+  justify-content: space-between;
+}
+.centerDisplay {
+  display: flex;
+  flex-grow: 8;
+  border: 2px solid red;
+}
+.bottomDisplay {
+  display: flex;
+  flex-grow: 0.5;
+  border: 2px solid yellow;
+}
+.row {
+  height: 100%;
+}
+.gameLayout {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 5px;
+}
+.displayFrames {
+  background-position: center;
+  background-size: contain;
+  height: 100%;
+  width: 14%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* text-align: center; */
+  background-repeat: no-repeat;
+  color: black;
+  font-size: 1.6em;
+}
+/* .centerDisplay {
+  display: flex;
+  flex-flow: row wrap;
+  text-align: center;
+} */
+.leftTableDisplay {
+  flex-grow: 1;
+  border: 2px solid white;
+  display: flex;
+  flex-flow: column wrap;
+}
+.tableDisplay {
+  flex-grow: 6;
+  border: 2px solid red;
+  background-image: url("../../assets/Game1/gambleTable.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.rightTableDisplay {
+  flex-grow: 1;
+  border: 2px solid yellow;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.leftTableCoins {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: row wrap;
+  text-align: center;
+}
+.leftTableButtons {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
+}
+.rightTableCoins {
+  display: flex;
+  flex-grow: 1;
+  flex-flow: row wrap;
+  text-align: center;
+}
+.rightTableButtons {
+  flex-grow: 1;
+  margin: 0 10%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column wrap;
+  text-align: center;
+}
+.bottomDisplay {
+  display: flex;
+  text-align: center;
+  margin-bottom: 4px;
+  justify-content: space-between;
+}
+.betTotal {
+  flex-grow: 3;
+  background-repeat: no-repeat;
+  background-image: url("../../assets/Game1/Button/betTotal.png");
+  background-size: contain;
+}
+.messageDisplay {
+  flex-grow: 9;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url("../../assets/Game1/bottomInfo.png");
+}
+.exit {
+  flex-grow: 2;
+  background-image: url("../../assets/Game1/Button/exit.png");
+  background-repeat: no-repeat;
+  padding-right: 2%;
+}
+.pointsFrame {
+  background-image: url("../../assets/Game1/Screen/points.png");
+}
+.timerFrame {
+  background-image: url("../../assets/Game1/Screen/timer.png");
+}
+.winningFrame {
+  background-image: url("../../assets/Game1/Screen/winning.png");
+}
+.timeFrame {
+  background-image: url("../../assets/Game1/Screen/time.png");
+}
+.gameIDFrame {
+  background-image: url("../../assets/Game1/Screen/gameID.png");
+}

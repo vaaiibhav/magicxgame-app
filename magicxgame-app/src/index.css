@@ -1,0 +1,15 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@font-face {
+  font-family: karstenbold;
+  src: url("./assets/fonts/karstenbold.ttf");
+}
+
+html,
+body {
+  font-family: karstenbold;
+  background-image: url("./assets/Game1/gudGudiBg.png");
+  width: 100%;
+  height: 100%;
+}
