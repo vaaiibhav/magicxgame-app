@@ -1,15 +1,16 @@
 import React from "react";
-import TopDisplays from "./TopDisplays";
-import CenterDisplay from "./CenterDisplay";
+import { Container, Row, Col } from "react-bootstrap";
+import "./GudGudiGame.css";
+import TopDisplay from "./TopDisplay";
+import MiddleDisplay from "./MiddleDisplay";
 import BottomDisplay from "./BottomDisplay";
-
 const GudGudiGame = () => {
   return (
-    <div className="m-2 gameLayout" style={{ height: "100%" }}>
-      <TopDisplays />
-      <CenterDisplay />
+    <Container fluid className="gameLayout">
+      <TopDisplay />
+      <MiddleDisplay />
       <BottomDisplay />
-    </div>
+    </Container>
   );
 };
 
