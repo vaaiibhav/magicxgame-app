@@ -1,13 +1,13 @@
 .container,
 .row {
   width: 100%;
-  color: white;
+  color: black;
   margin: 0 0;
 }
 
 /* Layout  */
 .gameLayout {
-  background: no-repeat center / cover url("../../assets/Game1/gudGudiBg.png");
+  background: no-repeat center / cover url("../../assets/Game1/gudGudiBg.jpg");
   /* background: no-repeat center / contain
     url("../../assets/Game1/jhandiMundaLayout.jpg"); */
   display: flex;
@@ -54,7 +54,6 @@
   text-align: center;
 }
 .topDisplayTopRowFrame {
-  color: black;
   font-size: 2.6vw;
   padding-bottom: 1%;
   display: flex;
@@ -180,6 +179,7 @@
 }
 /* Top Display Frames */
 .pointsFrame {
+  color: blue;
   background: no-repeat center / contain
     url("../../assets/Game1/Screen/points.png");
 }
@@ -188,10 +188,12 @@
     url("../../assets/Game1/Screen/timer.png");
 }
 .winningFrame {
+  color: green;
   background: no-repeat center / contain
     url("../../assets/Game1/Screen/winning.png");
 }
 .timeFrame {
+  font-size: 1vw;
   background: no-repeat center / contain
     url("../../assets/Game1/Screen/time.png");
 }
@@ -219,12 +221,11 @@
     url("../../assets/Game1/Button/exit.png");
 }
 .betMessages {
-  color: black;
   background: no-repeat center / contain
     url("../../assets/Game1/bottomInfo.png");
 }
 .betTotal {
-  color: black;
+  color: red;
   padding-top: 10%;
   font-size: 1.6vw;
   background: no-repeat center / contain
@@ -238,7 +239,6 @@
   text-align: center;
 }
 .slot1Bet {
-  color: black;
   flex: 1;
   background: no-repeat center / 30%
     url("../../assets/Game1/ScoreButton/scoreButton.png");
@@ -256,6 +256,7 @@
   width: 80%;
 }
 .lastwinns {
+  color: white;
   align-self: center;
   flex: 2;
   background: no-repeat center / 100%

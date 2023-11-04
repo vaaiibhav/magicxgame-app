@@ -11,19 +11,20 @@ const TopDisplayTopRow = () => {
     <Row className="topDisplayTopRow">
       <Col md={2} className="pointsFrame topDisplayTopRowFrame">
         {/* {bears} */}
+        16400
       </Col>
       <Col md={2} className="timerFrame topDisplayTopRowFrame">
-        51000
+        00:40
       </Col>
       <Col md={2} className="emptyFrame topDisplayTopRowFrame"></Col>
       <Col md={2} className="winningFrame topDisplayTopRowFrame">
         51000
       </Col>
       <Col md={2} className="timeFrame topDisplayTopRowFrame">
-        51000
+        04-Nov 02:12 PM
       </Col>
       <Col md={2} className="gameIDFrame topDisplayTopRowFrame">
-        51000
+        1451000
       </Col>
     </Row>
   );
