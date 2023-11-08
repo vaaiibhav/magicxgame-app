@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 490.14 178.62">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #febe10;
+      }
+
+      .cls-2 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-3 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-4 {
+        letter-spacing: .01em;
+      }
+
+      .cls-5 {
+        fill: #2b3990;
+        font-family: Montserrat-Black, Montserrat;
+        font-size: 19.02px;
+        font-weight: 800;
+      }
+
+      .cls-6 {
+        stroke: #f89747;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-6, .cls-7 {
+        fill: none;
+      }
+
+      .cls-8 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-9 {
+        letter-spacing: -.04em;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="75.23" cy="114.21" fx="75.23" fy="114.21" r="120.25" gradientTransform="translate(138.31 20.97) scale(1.09 .62)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f1f2f2"/>
+      <stop offset="1" stop-color="#d1d3d4"/>
+    </radialGradient>
+    <clipPath id="clippath">
+      <polygon class="cls-7" points="388.66 100.24 388.66 78.71 391.16 77.6 391.16 49.44 296.53 49.44 291.65 51.6 231.44 51.6 226.56 49.44 171.05 49.44 168.28 50.67 130.47 50.67 127.7 49.44 50.07 49.44 50.07 59.83 54 61.57 54 78.37 50.07 80.12 50.07 133.13 391.16 133.13 391.16 101.35 388.66 100.24"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <polygon class="cls-1" points="397.72 74.75 397.72 53.22 395.22 52.11 395.22 47.64 377.59 47.64 371.56 44.95 311.34 44.95 305.31 47.64 273.31 47.64 270.45 46.36 187.27 46.36 184.41 47.64 151.63 47.64 144.31 44.38 106.76 44.38 99.43 47.64 46.02 47.64 46.02 53.83 43.27 55.06 43.27 63.4 46.02 64.62 46.02 90.03 43.27 91.26 43.27 99.6 46.02 100.83 46.02 111.49 43.25 112.72 43.25 129.52 46.02 130.75 46.02 134.93 58.49 134.93 64.8 137.74 96.53 137.74 102.84 134.93 221.29 134.93 224.73 136.46 295.34 136.46 298.78 134.93 338.68 134.93 344.99 137.74 376.73 137.74 383.04 134.93 395.22 134.93 395.22 124.48 397.28 123.56 397.28 92.18 395.22 91.27 395.22 75.86 397.72 74.75"/>
+        <polygon class="cls-3" points="388.66 100.24 388.66 78.71 391.16 77.6 391.16 49.44 296.53 49.44 291.65 51.6 231.44 51.6 226.56 49.44 171.05 49.44 168.28 50.67 130.47 50.67 127.7 49.44 50.07 49.44 50.07 59.83 54 61.57 54 78.37 50.07 80.12 50.07 133.13 391.16 133.13 391.16 101.35 388.66 100.24"/>
+        <polygon class="cls-1" points="107.86 160.82 158.88 160.82 162.87 164.62 273.27 164.62 277.26 160.82 328.08 160.82 355.27 134.97 272.83 134.97 163.1 134.97 80.67 134.97 107.86 160.82"/>
+        <g class="cls-8">
+          <g>
+            <g>
+              <line class="cls-6" x1="78.62" x2="78.62" y2="178.62"/>
+              <line class="cls-6" x1="114.09" x2="114.09" y2="178.62"/>
+              <line class="cls-6" x1="149.55" x2="149.55" y2="178.62"/>
+              <line class="cls-6" x1="185.02" x2="185.02" y2="178.62"/>
+              <line class="cls-6" x1="220.48" x2="220.48" y2="178.62"/>
+              <line class="cls-6" x1="255.95" x2="255.95" y2="178.62"/>
+              <line class="cls-6" x1="291.42" x2="291.42" y2="178.62"/>
+              <line class="cls-6" x1="326.88" x2="326.88" y2="178.62"/>
+              <line class="cls-6" x1="362.35" x2="362.35" y2="178.62"/>
+            </g>
+            <line class="cls-6" y1="89.31" x2="490.14" y2="89.31"/>
+          </g>
+        </g>
+      </g>
+      <text class="cls-5" transform="translate(145.72 155.62)"><tspan class="cls-4" x="0" y="0">L</tspan><tspan x="11.92" y="0">A</tspan><tspan class="cls-2" x="27.25" y="0">S</tspan><tspan x="39.56" y="0">T 10 </tspan><tspan class="cls-2" x="84.52" y="0">D</tspan><tspan class="cls-9" x="100.04" y="0">AT</tspan><tspan x="126.48" y="0">A</tspan></text>
+    </g>
+  </g>
+</svg>

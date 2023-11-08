@@ -8,7 +8,7 @@
 /* Layout  */
 .gameLayout {
   background: no-repeat center / cover url("../../assets/Game1/gudGudiBg.jpg");
-  /* background: no-repeat center / contain
+  /* background: no-repeat center / cover
     url("../../assets/Game1/jhandiMundaLayout.jpg"); */
   display: flex;
   flex-flow: column wrap;

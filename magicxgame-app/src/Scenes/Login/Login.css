@@ -1,0 +1,26 @@
+.row,
+.container-fluid {
+  height: 100%;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+}
+.bgScreen {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center / cover url("../../assets/Login/loginBg.jpg");
+}
+.loginModal {
+  height: 96%;
+
+  background: no-repeat center / contain url("../../assets/Login/modalBg.png");
+}
+.loginBtnBg {
+  width: auto;
+  /* height: 55px; */
+  /* background: no-repeat center / cover url("../../assets/Login/loginButton.png"); */
+}
+.loginForm {
+  position: relative;
+  margin-top: 20%;
+  width: 30%;
+}

@@ -1,30 +1,27 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
-
+import { useGudGudiStore, useGameStore } from "../../../states/store.js";
 const TopDisplayTopRow = () => {
-  try {
-    const bears = useBearStore((state) => state.bears);
-  } catch (error) {
-    console.log("error:", error);
-  }
+  const { balance, winning, gameTime, gameID } = useGudGudiStore();
+  const { timer } = useGameStore();
+
   return (
     <Row className="topDisplayTopRow">
       <Col md={2} className="pointsFrame topDisplayTopRowFrame">
-        {/* {bears} */}
-        16400
+        {balance}
       </Col>
       <Col md={2} className="timerFrame topDisplayTopRowFrame">
-        00:40
+        {"00:" + timer}
       </Col>
       <Col md={2} className="emptyFrame topDisplayTopRowFrame"></Col>
       <Col md={2} className="winningFrame topDisplayTopRowFrame">
-        51000
+        {winning}
       </Col>
       <Col md={2} className="timeFrame topDisplayTopRowFrame">
-        04-Nov 02:12 PM
+        {gameTime}
       </Col>
       <Col md={2} className="gameIDFrame topDisplayTopRowFrame">
-        1451000
+        {gameID}
       </Col>
     </Row>
   );

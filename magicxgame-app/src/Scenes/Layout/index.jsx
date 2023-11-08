@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import useSocketState from "../../socket/useSocketState";
+import initializeSocketCluster from "../../socket";
 
 const Layout = () => {
+  let socket;
+  socket = initializeSocketCluster();
+  if (socket) {
+    const socketState = useSocketState(socket);
+  }
+
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -11,6 +19,7 @@ const Layout = () => {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const isNotViewable = useMediaQuery({ query: "(max-width:800)" });
   const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       {/* <h1>Device Test!</h1>
@@ -19,7 +28,6 @@ const Layout = () => {
       {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
       <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
       {isRetina && <p>You are retina</p>} */}
-
       {isPortrait ? "Rotate Screen to Play Game" : <Outlet />}
     </div>
   );
