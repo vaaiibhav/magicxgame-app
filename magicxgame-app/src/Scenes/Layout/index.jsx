@@ -2,14 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import useSocketState from "../../socket/useSocketState";
-import initializeSocketCluster from "../../socket";
-
 const Layout = () => {
-  let socket;
-  socket = initializeSocketCluster();
-  if (socket) {
-    const socketState = useSocketState(socket);
-  }
+  useSocketState();
 
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",

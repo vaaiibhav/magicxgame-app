@@ -1,7 +1,7 @@
 .row,
 .container-fluid {
   height: 100%;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.2rem;
 }
 .bgScreen {
@@ -10,8 +10,7 @@
   background: no-repeat center / cover url("../../assets/Login/loginBg.jpg");
 }
 .loginModal {
-  height: 96%;
-
+  height: 80%;
   background: no-repeat center / contain url("../../assets/Login/modalBg.png");
 }
 .loginBtnBg {

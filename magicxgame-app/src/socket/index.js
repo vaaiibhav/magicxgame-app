@@ -1,5 +1,4 @@
 import socketCluster from "socketcluster-client";
-import { useEffect } from "react";
 import { serverHost, serverPort } from "../constants";
 
 const initializeSocketCluster = () => {

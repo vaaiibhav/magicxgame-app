@@ -11,9 +11,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route index path="/login" element={<Login />} />
+        <Route path="*" element={<Login />} />
         <Route element={<Layout />}>
-          <Route path="/" />
-          <Route index path="/login" element={<Login />} />
           <Route path="/gudigudi" element={<GudGudiGame />} />
           <Route path="/game-menu" element={<GameMenu />} />
         </Route>

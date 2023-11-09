@@ -14,7 +14,7 @@ const loginStore = create((set) => ({
   setBalance: (balance) => set((state) => balance),
 }));
 const useGameStore = create((set) => ({
-  timer: "00:41",
+  timer: "41",
   setTimer: (newTime) => set({ timer: newTime }),
 }));
 const useSecondGame = create((set) => ({
