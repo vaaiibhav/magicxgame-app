@@ -15,14 +15,22 @@ const useSocketState = () => {
       })();
       (async () => {
         for await (let event of socket.listener("connect")) {
-          (async () => {
-            // Set up a loop to handle remote transmitted events.
-            for await (let data of socket.receiver("gameTimer")) {
-              setTimer(data);
-              console.log("gameTimer:", data);
-              // socket.transmit("customRemoteEvent", data + 123456);
-            }
-          })();
+          console.log("event:", event);
+          socket.transmit("customRemoteEvent", "hEY");
+
+          // Set up a loop to handle remote transmitted events.
+          for await (let data of socket.receiver("gameTimer")) {
+            console.log("gameTimer:", data);
+            setTimer(data);
+            // socket.transmit("customRemoteEvent", data + 123456);
+          }
+        }
+      })();
+      (async () => {
+        let timerChannel = socket.subscribe("gameTimer");
+        for await (let countdown of timerChannel) {
+          console.log({ countdown });
+          // ... Handle channel data.
         }
       })();
     }

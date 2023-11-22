@@ -1,10 +1,16 @@
 import React from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
+import { useGudGudiStore } from "../../../../states/store";
 
 const LeftSideButtons = () => {
+  const { setCancelAllBets } = useGudGudiStore();
   return (
     <Col md={2} className="sideButtons leftActionBtns">
-      <Button variant="danger" className="cancelAllBtn actionBtns"></Button>
+      <Button
+        variant="danger"
+        onClick={setCancelAllBets}
+        className="cancelAllBtn actionBtns"
+      ></Button>
       <Button
         variant="danger"
         className="specificCancelBtn actionBtns"

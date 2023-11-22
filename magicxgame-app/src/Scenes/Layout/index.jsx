@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
-import useSocketState from "../../socket/useSocketState";
+import ConnectionManager from "../../socket/ConnectionManager";
+// import {
+//   useGudGudiStore,
+//   loginStore,
+//   useSecondGame,
+//   useGameStore,
+// } from "../../states/store";
 const Layout = () => {
-  useSocketState();
-
   const isDesktopOrLaptop = useMediaQuery({
     query: "(min-width: 1224px)",
   });
@@ -22,6 +26,7 @@ const Layout = () => {
       {isTabletOrMobile && <p>You are a tablet or mobile phone</p>}
       <p>Your are in {isPortrait ? "portrait" : "landscape"} orientation</p>
       {isRetina && <p>You are retina</p>} */}
+      <ConnectionManager />
       {isPortrait ? "Rotate Screen to Play Game" : <Outlet />}
     </div>
   );
