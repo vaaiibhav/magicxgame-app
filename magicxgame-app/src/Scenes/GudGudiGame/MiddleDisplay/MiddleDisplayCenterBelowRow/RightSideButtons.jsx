@@ -3,26 +3,34 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import { useGameStore, useGudGudiStore } from "../../../../states/store";
 const RightSideButtons = () => {
   const { setBetDouble, setPreviousBets } = useGudGudiStore();
-  const doubleBets = () => {
-    console.log("doubleBets:");
+  const doubleBetsBtn = () => {
+    if (!allowBets) return setServerMessage("Times UP!");
     setBetDouble();
   };
-  const previousBet = () => {
+  const previousBetBtn = () => {
+    if (!allowBets) return setServerMessage("Times UP!");
     setPreviousBets();
+  };
+  const betOKBtn = () => {
+    if (!allowBets) return setServerMessage("Times UP!");
   };
   return (
     <Col md={2} className="sideButtons rightActionBtns">
       <Button
         variant="danger"
-        onClick={previousBet}
+        onClick={previousBetBtn}
         className="previousBetBtn actionBtns"
       ></Button>
       <Button
         variant="danger"
-        onClick={doubleBets}
+        onClick={doubleBetsBtn}
         className="betDoubleBtn actionBtns"
       ></Button>
-      <Button variant="danger" className="betOkBtn actionBtns"></Button>
+      <Button
+        variant="danger"
+        onClick={betOKBtn}
+        className="betOkBtn actionBtns"
+      ></Button>
     </Col>
   );
 };

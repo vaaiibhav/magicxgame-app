@@ -27,18 +27,16 @@
 .middleDisplay {
   display: flex;
   flex-flow: column wrap;
-  z-index: 2;
   flex: 6;
-  background: no-repeat center / 73% url("../../assets/Game1/gambleTable.png");
+  background: no-repeat center / 83% url("../../assets/Game1/gambleTable.png");
 }
 .middleDisplay::before {
   content: " ";
   position: absolute;
-  z-index: 1;
   top: 0;
-  width: 87%;
+  width: 20%;
   height: 28%;
-  margin-right: 5%;
+  margin-left: 32%;
   background-color: yellow;
   background: no-repeat center / contain
     url("../../assets/Game1/lady-cropped.png");
@@ -180,7 +178,9 @@
   flex: 6;
 }
 .middleDisplayBottomRow {
-  flex: 2;
+  flex: 1;
+  display: inline-block;
+  text-align: center;
 }
 /* Top Display Frames */
 .pointsFrame {

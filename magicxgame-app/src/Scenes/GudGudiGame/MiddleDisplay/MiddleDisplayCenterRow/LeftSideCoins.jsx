@@ -8,7 +8,8 @@ import {
 } from "../../../../states/store";
 
 const LeftSideCoins = () => {
-  const { coinValue, setCoinValue } = useGudGudiStore();
+  const { coinValue, setCoinValue, points } = useGudGudiStore();
+
   return (
     <Col md={2} className="sideCoins">
       <Button

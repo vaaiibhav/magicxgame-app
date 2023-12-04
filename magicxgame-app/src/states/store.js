@@ -12,16 +12,9 @@ const useLoginStore = create((set) => ({
   reduceBalance: (reduceBalanceBy) => set((state) => balance - reduceBalanceBy),
 }));
 const useGudGudiStore = create((set) => ({
-  winning: null,
+  winning: 0,
   points: useLoginStore.getState().balance,
-  previousBets: {
-    slot0Bet: 0,
-    slot1Bet: 0,
-    slot2Bet: 0,
-    slot3Bet: 0,
-    slot4Bet: 0,
-    slot5Bet: 0,
-  },
+  previousBets: {},
   slotsBets: {
     slot0Bet: 0,
     slot1Bet: 0,
@@ -30,12 +23,15 @@ const useGudGudiStore = create((set) => ({
     slot4Bet: 0,
     slot5Bet: 0,
   },
-  clonePreviousBets: () =>
-    set((state) => {
-      state.previousBets = Object.assign(state.slotsBets);
-    }),
-  setPreviousBets: () => {},
+  // clonePreviousBets: () =>
+  //   set((state) => {
+  //     state.previousBets = Object.assign(state.slotsBets);
+  //   }),
+  setPreviousBets: (currentBets) => {
+    set({ previousBets: currentBets });
+  },
   setPoints: (newPoints) => set({ points: newPoints }),
+  setWinning: (newWinning) => set({ winning: newWinning }),
   setSlotsBets: (slotToBet) => {
     set((state) => {
       const updatedSlotBets = {
@@ -97,8 +93,16 @@ const useGudGudiStore = create((set) => ({
         betTotal: newBetTotal * 2, // Double the new total bet
       };
     }),
-  betTotal: null,
+  betTotal: 0,
   coinValue: 10,
+  winDiceObj: {},
+  rollDices: false,
+  setRollDices: (diceState) => {
+    set({ rollDices: diceState });
+  },
+  setWinDiceObj: (winArray) => {
+    set({ winDiceObj: winArray });
+  },
   setCoinValue: (newValue) =>
     set({
       coinValue: newValue,
@@ -109,9 +113,12 @@ const useGameStore = create((set) => ({
   timer: "00",
   allowBets: false,
   gameDateTime: "",
-  gameID: null,
+  gameID: 0,
+  socketInstance: {},
   serverMessage: `asd Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis
   eiusasfasdasf`,
+  setSocketInstance: (newSocketInstance) =>
+    set({ socketInstance: newSocketInstance }),
   setGameID: (newGameID) => set({ gameID: newGameID }),
   setAllowBets: (setBets) => set({ allowBets: setBets }),
   setServerMessage: (message) => set({ serverMessage: message }),

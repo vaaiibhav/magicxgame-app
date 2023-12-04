@@ -21,6 +21,8 @@ const Login = () => {
   const { storeToken } = useLoginStore();
   const handle = useFullScreenHandle();
   const gotoMenu = async () => {
+    if (loginCred.loginID == "" || loginCred.loginPD == "")
+      return toast.error("Input Login ID and Password");
     await handle.enter();
     try {
       const userLogin = await axios
@@ -35,7 +37,7 @@ const Login = () => {
         navigate("/game-menu");
       }
     } catch (error) {
-      console.log("error:", error);
+      console.error("error:", error);
       if (error) toast.error(error?.response?.data?.error);
     }
   };
@@ -74,7 +76,11 @@ const Login = () => {
                   id="loginPD"
                 />
                 <p></p>
-                <Button className="loginBtnBg" onClick={gotoMenu}>
+                <Button
+                  className="loginBtnBg"
+                  autoFocus={true}
+                  onClick={gotoMenu}
+                >
                   Login
                 </Button>
               </form>
