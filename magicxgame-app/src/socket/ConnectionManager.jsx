@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { socket } from "./index";
-import _ from "lodash";
+// import { socket } from "./index";
+import { io } from "socket.io-client";
+import { serverURL, serverHost, serverPort } from "../constants";
 import {
   useGudGudiStore,
   useLoginStore,
@@ -20,6 +21,7 @@ const ConnectionManager = () => {
     setAllowBets,
     setGameID,
     gameID,
+    setSocketInstance,
   } = useGameStore();
   const {
     setCancelAllBets,
@@ -28,26 +30,28 @@ const ConnectionManager = () => {
     slotsBets,
     betTotal,
     winDiceObj,
+    setlastTenValues,
+    setblinkTake,
     setWinDiceObj,
+    setWinning,
     setPreviousBets,
   } = useGudGudiStore();
   const { userToken, setBalance } = useLoginStore();
   const navigateifError = useNavigate();
   const playlast10Seconds = new Audio(last10Seconds);
-  const emitGudGudiBets = _.debounce(() => {
-    if (countDowner === 5 && gameID > 0) {
-      slotsBets.totalBet = betTotal;
-      socket.emit("gudGudiBets", slotsBets);
-    }
-  }, 1000);
+
   useEffect(() => {
+    const socket = io(serverURL, {
+      auth: { token: localStorage.getItem("blueFighter.authToken") },
+    });
     function onConnect() {
       socket.emit("getMyDetails", "", (balanceReply) => {
-        setBalance(balanceReply);
+        console.log("balanceReply:", balanceReply, typeof balanceReply);
+        setBalance(Number(balanceReply));
         setServerMessage("Please Wait untill Next Game");
+        setSocketInstance(socket);
       });
       socket.emit("getGameID", "", (getGameID) => {
-        console.log("getGameID:", getGameID);
         setGameID(getGameID);
       });
       setIsConnected(true);
@@ -88,14 +92,12 @@ const ConnectionManager = () => {
       }
     }
     function onUserBalance(balanceFromServer) {
-      console.log("balanceFromServer:", balanceFromServer);
       setBalance(balanceFromServer);
     }
     function onConnnectError(error) {
       navigateifError("/login");
     }
     function onServerMessage(message) {
-      console.log(message);
       setServerMessage(message);
     }
     function onGameDate(getDateTime) {
@@ -105,8 +107,39 @@ const ConnectionManager = () => {
       setGameID(getGameID);
     }
     function onGudGudiWinningNumbers(winningArray) {
-      console.log("winningArray:", winningArray);
+      const winFromThisGame = gudGudiPointsCalculator(winningArray, slotsBets);
+      if (winFromThisGame > 1) setblinkTake(true);
       setWinDiceObj(winningArray);
+      setWinning(winFromThisGame);
+    }
+    function emitGudGudiBets() {
+      slotsBets.totalBet = betTotal;
+      socket.emit("gudGudiBets", slotsBets);
+    }
+    function calculateAmount(hit, amount) {
+      if (hit === 0) return 0;
+      else if (hit === 1) return amount / 2;
+      else if (hit === 2) return amount;
+      else if (hit === 3) return amount * 5;
+      else if (hit === 4) return amount * 10;
+      else if (hit === 5) return amount * 20;
+      else if (hit === 6) return amount * 50;
+    }
+    function gudGudiPointsCalculator(winningArray, slotsBets) {
+      let winPoints = 0;
+      let amountOnSlot = [];
+      for (let index = 0; index < winningArray.diceValues.length; index++) {
+        const slotBetKey = `slot${index}Bet`; // Construct the key dynamically
+        amountOnSlot[index] = calculateAmount(
+          winningArray.diceValues[index],
+          slotsBets[slotBetKey]
+        );
+        winPoints = winPoints + amountOnSlot[index];
+      }
+      return winPoints;
+    }
+    function gudGudiLastWinning(dataValues) {
+      setlastTenValues(dataValues);
     }
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
@@ -119,6 +152,7 @@ const ConnectionManager = () => {
     socket.on("gameDate", onGameDate);
     socket.on("gameID", onGameID);
     socket.on("gudGudiWinningNumbers", onGudGudiWinningNumbers);
+    socket.on("gudGudiLastWinning", gudGudiLastWinning);
 
     return () => {
       socket.off("connect", onConnect);

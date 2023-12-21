@@ -23,21 +23,12 @@ const BottomWinningNumbers = (props) => {
     case 5:
       winImage = diceImages.clubs;
       break;
-
     default:
       break;
   }
   return (
     <Image
-      className="dontSelect"
-      style={{
-        background: "white",
-        border: " white 1px solid",
-        padding: "2px",
-        margin: "0px 5px",
-        width: "50px",
-        height: "50px",
-      }}
+      className="dontSelect bottomWinningNumberslast10"
       src={winImage}
       rounded
     />

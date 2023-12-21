@@ -5,9 +5,8 @@ import coinAudio from "../../../../assets/Audio/coinAudio.mp3";
 
 const TableCenterRow = () => {
   const { setServerMessage, allowBets, timer } = useGameStore();
-  const { slotsBets, setSlotsBets, points, coinValue, winDiceObj } =
+  const { slotsBets, setSlotsBets, points, coinValue, lastTenValues } =
     useGudGudiStore();
-  const slot1 = [0, 1, 6, 8, 4, 3, 1, 0, 1, 1];
   const betOnSlot = (betonSlotNo) => {
     if (points < coinValue) return setServerMessage("Not Enough Coins");
     if (!allowBets) return setServerMessage("Times UP!");
@@ -20,10 +19,13 @@ const TableCenterRow = () => {
         <label className="slot1Bet">{slotsBets.slot0Bet}</label>
         <label className="slot1Logo slotLogo">&nbsp;</label>{" "}
         <div className="slot1last10">
-          {slot1.map((last, index) => (
-            <label key={index} className="lastwinns">
+          {lastTenValues.map((last, index) => (
+            <label
+              key={index}
+              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+            >
               {" "}
-              {last > 0 ? last : "X"}
+              {last.slot0Winning > 0 ? last.slot0Winning : "X"}
             </label>
           ))}
         </div>
@@ -33,10 +35,13 @@ const TableCenterRow = () => {
         <label className="slot1Bet">{slotsBets.slot1Bet}</label>
         <label className="slot2Logo slotLogo">&nbsp;</label>{" "}
         <div className="slot1last10">
-          {slot1.map((last, index) => (
-            <label key={index} className="lastwinns">
+          {lastTenValues.map((last, index) => (
+            <label
+              key={index}
+              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+            >
               {" "}
-              {last > 0 ? last : "X"}
+              {last.slot1Winning > 0 ? last.slot1Winning : "X"}
             </label>
           ))}
         </div>
@@ -46,10 +51,13 @@ const TableCenterRow = () => {
         <label className="slot1Bet">{slotsBets.slot2Bet}</label>
         <label className="slot3Logo slotLogo">&nbsp;</label>{" "}
         <div className="slot1last10">
-          {slot1.map((last, index) => (
-            <label key={index} className="lastwinns">
+          {lastTenValues.map((last, index) => (
+            <label
+              key={index}
+              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+            >
               {" "}
-              {last > 0 ? last : "X"}
+              {last.slot2Winning > 0 ? last.slot2Winning : "X"}
             </label>
           ))}
         </div>

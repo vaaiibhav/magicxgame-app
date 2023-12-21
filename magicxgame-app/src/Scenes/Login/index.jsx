@@ -92,7 +92,6 @@ const Login = () => {
           </Col>
         </Row>
       </Container>
-      <ConnectionManager />
     </FullScreen>
   );
 };

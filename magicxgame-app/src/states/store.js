@@ -3,7 +3,7 @@ const useLoginStore = create((set) => ({
   token: "",
   storeToken: (newToken) => set((state) => ({ token: newToken })),
   removeToken: () => set({ token: "" }),
-  balance: null,
+  balance: 0,
   setBalance: (balance) => {
     set({ balance }); // Update balance in useLoginStore
     const { setPoints } = useGudGudiStore.getState(); // Access setPoints from useGudGudiStore
@@ -13,8 +13,17 @@ const useLoginStore = create((set) => ({
 }));
 const useGudGudiStore = create((set) => ({
   winning: 0,
-  points: useLoginStore.getState().balance,
-  previousBets: {},
+  blinkTake: false,
+  lastTenValues: [{}],
+  points: Number(useLoginStore.getState().balance),
+  previousBets: {
+    slot0Winning: 0,
+    slot1Winning: 0,
+    slot2Winning: 0,
+    slot3Winning: 0,
+    slot4Winning: 0,
+    slot5Winning: 0,
+  },
   slotsBets: {
     slot0Bet: 0,
     slot1Bet: 0,
@@ -30,6 +39,9 @@ const useGudGudiStore = create((set) => ({
   setPreviousBets: (currentBets) => {
     set({ previousBets: currentBets });
   },
+  setlastTenValues: (newlastTenValues) =>
+    set({ lastTenValues: newlastTenValues }),
+  setblinkTake: (newblinkTake) => set({ blinkTake: newblinkTake }),
   setPoints: (newPoints) => set({ points: newPoints }),
   setWinning: (newWinning) => set({ winning: newWinning }),
   setSlotsBets: (slotToBet) => {
@@ -38,10 +50,20 @@ const useGudGudiStore = create((set) => ({
         ...state.slotsBets,
         [slotToBet]: state.slotsBets[slotToBet] + state.coinValue,
       };
+      // console.log("slotsBets:", .slotsBets);
+
+      console.log("points:", state.points, typeof state.points);
+      console.log("coinValue:", state.coinValue, typeof state.coinValue);
+      console.log("betTotal :", state.betTotal, typeof state.betTotal);
+      let currentBetTotal = state.betTotal + state.coinValue;
+      console.log("currentBetTotal:", currentBetTotal);
+      let currentPoint =
+        Number(useLoginStore.getState().balance) - currentBetTotal;
+      console.log("currentPoint:", currentPoint);
       return {
         slotsBets: updatedSlotBets,
-        points: useLoginStore.getState().balance - state.betTotal, // Deduct coinValue from points
-        betTotal: state.betTotal + state.coinValue, // Add coinValue to betTotal
+        betTotal: currentBetTotal, // Add coinValue to betTotal
+        points: currentPoint, // Deduct coinValue from points
       };
     });
   },
@@ -72,7 +94,7 @@ const useGudGudiStore = create((set) => ({
       return {
         ...state, // Maintain other state values
         slotsBets: updatedSlotsBets, // Update slot bets
-        points: state.points + state.betTotal, // Update points by adding betTotal
+        points: Number(useLoginStore.getState().balance), // Update points by adding betTotal
         betTotal: 0, // Add coinValue to betTotal
       };
     }),
@@ -111,7 +133,7 @@ const useGudGudiStore = create((set) => ({
 
 const useGameStore = create((set) => ({
   timer: "00",
-  allowBets: false,
+  allowBets: true,
   gameDateTime: "",
   gameID: 0,
   socketInstance: {},

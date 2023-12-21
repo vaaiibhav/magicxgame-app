@@ -26,16 +26,17 @@
 }
 .middleDisplay {
   display: flex;
+  position: relative;
   flex-flow: column wrap;
   flex: 6;
-  background: no-repeat center / 83% url("../../assets/Game1/gambleTable.png");
+  background: no-repeat center / 66% url("../../assets/Game1/gameTableBg.png");
 }
 .middleDisplay::before {
   content: " ";
   position: absolute;
   top: 0;
   width: 20%;
-  height: 28%;
+  height: 25%;
   margin-left: 32%;
   background-color: yellow;
   background: no-repeat center / contain
@@ -79,8 +80,8 @@
 .tableBelowRow {
   display: flex;
   flex-wrap: wrap;
-  padding: 1.5% 3% 0 3%;
-  height: 80%;
+  padding: 1% 4% 2% 4%;
+  height: 95%;
 }
 .tableBelowRow > * {
   flex: 1;
@@ -88,7 +89,7 @@
 .tableAboveRow {
   display: flex;
   height: 100%;
-  padding: 6% 4% 0 4%;
+  padding: 3.5% 4% 0 4%;
   height: 95%;
 }
 .tableAboveRow > * {
@@ -113,6 +114,15 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.bottomWinningNumberslast10 {
+  background: white;
+  border: black 1px solid;
+  padding: 2px;
+  margin: 0px 5px;
+  width: 50px;
+  height: 50px;
+}
+
 .coin10Btn {
   background-image: url("../../assets/Game1/Coin/coin10.png");
 }
@@ -262,8 +272,15 @@
   color: white;
   align-self: center;
   flex: 2;
-  background: no-repeat center / 100%
-    url("../../assets/Game1/last10/last10One.png");
+  background: gray;
+  border: 1px white solid;
+}
+.lastGoldwinns {
+  color: black;
+  align-self: center;
+  flex: 2;
+  background: gold;
+  border: 1px black solid;
 }
 .slot1Logo {
   background: no-repeat center / contain
