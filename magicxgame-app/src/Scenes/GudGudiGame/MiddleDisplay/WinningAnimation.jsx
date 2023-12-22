@@ -9,14 +9,19 @@ const WinningAnimation = (props) => {
   const [animationStarted, setAnimationStarted] = useState(false);
   const [scope, animate] = useAnimate();
   const animateStart = async () => {
-    console.log("animateStart:");
+    console.log("animateStart:", animationStarted);
     setAnimationStarted(true);
-    await animate(scope.current, { y: "0%", rotate: 0, scale: 1.5 });
-    await animate(scope.current, {
+    await animate(
+      "#winDiceDiv",
+      { alignItems: "center" },
+      { duration: 12, type: "spring", stiffness: 50 }
+    );
+    await animate("#winDice1", {
       transform: "translateY(100%)",
       rotate: 240,
     });
     setAnimationStarted(false);
+    console.log("animateEnd:", animationStarted);
   };
   return (
     <AnimatePresence>
@@ -30,57 +35,58 @@ const WinningAnimation = (props) => {
           opacity: 1,
           width: "100%",
         }}
-        transition={{ duration: 12, type: "spring", stiffness: 50 }}
+        ref={scope}
         style={{
           position: "absolute",
           top: 0,
           height: "100%",
-          // left: "50%",
-          // width: "6%",
           display: "flex", // Use flexbox
           alignItems: "flex-start", // Align items to the top
-          // justifyContent: "center", // Center items horizontally
-          // height: "13%",
           background: "transparent",
         }}
       >
         <Row>
           <Col></Col>
           <Col>
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              src={winImage}
-              initial={{ y: 0 }}
-              ref={scope}
-            />
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              animate={{ rotate: 180 }}
-              transition={{ from: 270, duration: 2 }}
-              src={winImage}
-            />
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              src={winImage}
-            />
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              src={winImage}
-            />
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              src={winImage}
-            />
-            <motion.img
-              className="dontSelect bottomWinningNumberslast10"
-              rounded
-              src={winImage}
-            />
+            <motion.div
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                height: "100%",
+              }}
+              id="winDiceDiv"
+            >
+              <motion.img
+                className="dontSelect bottomWinningNumberslast10"
+                id="winDice1"
+                src={winImage}
+              />
+              <motion.img
+                id="winDice2"
+                className="dontSelect bottomWinningNumberslast10"
+                src={winImage}
+              />
+              <motion.img
+                id="winDice3"
+                className="dontSelect bottomWinningNumberslast10"
+                src={winImage}
+              />
+              <motion.img
+                id="winDice4"
+                className="dontSelect bottomWinningNumberslast10"
+                src={winImage}
+              />
+              <motion.img
+                id="winDice5"
+                className="dontSelect bottomWinningNumberslast10"
+                src={winImage}
+              />
+              <motion.img
+                id="winDice6"
+                className="dontSelect bottomWinningNumberslast10"
+                src={winImage}
+              />
+            </motion.div>
           </Col>
           <Col></Col>
         </Row>
