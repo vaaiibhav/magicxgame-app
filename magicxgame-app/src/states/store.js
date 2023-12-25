@@ -50,16 +50,9 @@ const useGudGudiStore = create((set) => ({
         ...state.slotsBets,
         [slotToBet]: state.slotsBets[slotToBet] + state.coinValue,
       };
-      // console.log("slotsBets:", .slotsBets);
-
-      console.log("points:", state.points, typeof state.points);
-      console.log("coinValue:", state.coinValue, typeof state.coinValue);
-      console.log("betTotal :", state.betTotal, typeof state.betTotal);
       let currentBetTotal = state.betTotal + state.coinValue;
-      console.log("currentBetTotal:", currentBetTotal);
       let currentPoint =
         Number(useLoginStore.getState().balance) - currentBetTotal;
-      console.log("currentPoint:", currentPoint);
       return {
         slotsBets: updatedSlotBets,
         betTotal: currentBetTotal, // Add coinValue to betTotal
@@ -134,6 +127,7 @@ const useGudGudiStore = create((set) => ({
 const useGameStore = create((set) => ({
   timer: "00",
   allowBets: true,
+  allowSendData: true,
   gameDateTime: "",
   gameID: 0,
   socketInstance: {},
@@ -143,6 +137,8 @@ const useGameStore = create((set) => ({
     set({ socketInstance: newSocketInstance }),
   setGameID: (newGameID) => set({ gameID: newGameID }),
   setAllowBets: (setBets) => set({ allowBets: setBets }),
+  setAllowSendData: (setAllowSendData) =>
+    set({ allowSendData: setAllowSendData }),
   setServerMessage: (message) => set({ serverMessage: message }),
   setTimer: (newTime) => {
     set({ timer: newTime });

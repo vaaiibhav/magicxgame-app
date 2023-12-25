@@ -29,9 +29,9 @@
   position: relative;
   flex-flow: column wrap;
   flex: 6;
-  background: no-repeat center / 66% url("../../assets/Game1/gameTableBg.png");
+  background: no-repeat center / 60% url("../../assets/Game1/gameTableBg.jpg");
 }
-.middleDisplay::before {
+.gameLayout::before {
   content: " ";
   position: absolute;
   top: 0;
@@ -41,6 +41,17 @@
   background-color: yellow;
   background: no-repeat center / contain
     url("../../assets/Game1/lady-cropped.png");
+}
+.bell {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15%;
+  height: 15%;
+  margin-right: 32%;
+  background-color: yellow;
+  background: no-repeat center / contain url("../../assets/Game1/bell.png");
 }
 .bottomDisplay {
   display: flex;
@@ -115,8 +126,8 @@
   background-size: contain;
 }
 .bottomWinningNumberslast10 {
-  background: white;
-  border: black 1px solid;
+  /* background: white; */
+  /* border: black 1px solid; */
   padding: 2px;
   margin: 0px 5px;
   width: 50px;
@@ -176,6 +187,15 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+.actionBtnsBlink {
+  width: 80%;
+  height: 30%;
+  background-color: transparent;
+  border-color: red;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .leftActionBtns {
   position: relative;
   text-align: left;
@@ -204,6 +224,7 @@
 }
 .winningFrame {
   color: green;
+  font-weight: bolder;
   background: no-repeat center / contain
     url("../../assets/Game1/Screen/winning.png");
 }
@@ -243,6 +264,8 @@
   color: red;
   padding-top: 10%;
   font-size: 1.6vw;
+  font-weight: bolder;
+  text-shadow: 3px 2px 3px black;
   background: no-repeat center / contain
     url("../../assets/Game1/Button/betTotal.png");
 }
@@ -254,6 +277,7 @@
 }
 .slot1Bet {
   flex: 1;
+  font-weight: bold;
   background: no-repeat center / 30%
     url("../../assets/Game1/ScoreButton/scoreButton.png");
 }
@@ -280,7 +304,7 @@
   align-self: center;
   flex: 2;
   background: gold;
-  border: 1px black solid;
+  border: 1px white solid;
 }
 .slot1Logo {
   background: no-repeat center / contain

@@ -19,7 +19,7 @@ const TopDisplayTopRow = () => {
       </Col>
       <Col md={2} className="emptyFrame dontSelect topDisplayTopRowFrame"></Col>
       <Col md={2} className="winningFrame dontSelect topDisplayTopRowFrame">
-        {winning}
+        {winning > 0 ? winning : "-"}
       </Col>
       <Col md={2} className="timeFrame dontSelect topDisplayTopRowFrame">
         <Timestamp date={gameDateTime} />

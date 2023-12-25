@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { socket } from "./index";
 import { io } from "socket.io-client";
 import { serverURL, serverHost, serverPort } from "../constants";
 import {
@@ -10,8 +9,7 @@ import {
 } from "../states/store";
 import { useNavigate } from "react-router-dom";
 import last10Seconds from "../assets/Audio/last10Seconds.mp3";
-// import ConnectionState from "./socket/ConnectionState";
-const ConnectionManager = () => {
+const useSocketManager = () => {
   const [isConnected, setIsConnected] = useState(false);
   const {
     setTimer,
@@ -113,7 +111,8 @@ const ConnectionManager = () => {
         winningNumberObject,
         slotsBets
       );
-      if (winFromThisGame > 1) setblinkTake(true);
+      if (winFromThisGame > 0) setblinkTake(true);
+      setAllowSendData(false);
       setWinDiceObj(winningNumberObject);
       setWinning(winFromThisGame);
     }
@@ -176,7 +175,6 @@ const ConnectionManager = () => {
       //   socket.off("gameTimer", onGameTimer);
     };
   }, []);
-  return <></>;
 };
 
-export default ConnectionManager;
+export default useSocketManager;

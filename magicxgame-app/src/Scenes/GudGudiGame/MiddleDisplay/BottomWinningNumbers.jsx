@@ -3,8 +3,9 @@ import { Image } from "react-bootstrap";
 import diceImages from "../../../assets/Game1";
 
 const BottomWinningNumbers = (props) => {
+  const { hasGoldenDice, imageToDisplay } = props;
   let winImage;
-  switch (props.imageToDisplay) {
+  switch (imageToDisplay) {
     case 0:
       winImage = diceImages.spades;
       break;
@@ -31,6 +32,13 @@ const BottomWinningNumbers = (props) => {
       className="dontSelect bottomWinningNumberslast10"
       src={winImage}
       rounded
+      style={{
+        boxShadow: hasGoldenDice
+          ? "3px 3px  gold,4px 4px black"
+          : "3px 3px  white,4px 4px black",
+        background: hasGoldenDice ? "gold" : "white",
+        border: "black 1px solid",
+      }}
     />
   );
 };

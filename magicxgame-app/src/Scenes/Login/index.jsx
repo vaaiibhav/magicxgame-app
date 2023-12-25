@@ -57,6 +57,7 @@ const Login = () => {
                   placeholder="Login ID"
                   name="loginID"
                   id="loginID"
+                  value="1234"
                   min="0"
                   onKeyDown={denyMinus}
                   required
@@ -71,6 +72,7 @@ const Login = () => {
                   }}
                   type="password"
                   required
+                  value="vaaiibhav"
                   placeholder="Password"
                   name="loginPD"
                   id="loginPD"

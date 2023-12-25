@@ -25,7 +25,7 @@ const TableCenterBelowRow = () => {
           {lastTenValues.map((last, index) => (
             <label
               key={index}
-              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+              className={last.hasGoldenDice ? "lastGoldwinns" : "lastwinns"}
             >
               {" "}
               {last.slot3Winning > 0 ? last.slot3Winning : "X"}
@@ -41,7 +41,7 @@ const TableCenterBelowRow = () => {
           {lastTenValues.map((last, index) => (
             <label
               key={index}
-              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+              className={last.hasGoldenDice ? "lastGoldwinns" : "lastwinns"}
             >
               {" "}
               {last.slot4Winning > 0 ? last.slot4Winning : "X"}
@@ -57,7 +57,7 @@ const TableCenterBelowRow = () => {
           {lastTenValues.map((last, index) => (
             <label
               key={index}
-              className={last.hasGoldenDice ? "lastwinns" : "lastGoldwinns"}
+              className={last.hasGoldenDice ? "lastGoldwinns" : "lastwinns"}
             >
               {" "}
               {last.slot5Winning > 0 ? last.slot5Winning : "X"}

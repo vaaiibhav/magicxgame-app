@@ -3,7 +3,7 @@ import { Container, Col, Row, Image } from "react-bootstrap";
 import BottomWinningNumbers from "./BottomWinningNumbers";
 
 const Last10Bottom = (props) => {
-  const { lastTenValues, timer } = props;
+  const { lastTenValues } = props;
   const convertedLast10 = () => {
     try {
       // Ensure lastTenValues is defined and has at least one element
@@ -37,7 +37,11 @@ const Last10Bottom = (props) => {
     <Row className="middleDisplayBottomRow dontSelect">
       <Col>
         {SingleLast10.map((singleLast10, index) => (
-          <BottomWinningNumbers key={index} imageToDisplay={singleLast10} />
+          <BottomWinningNumbers
+            key={index}
+            imageToDisplay={singleLast10}
+            hasGoldenDice={lastTenValues[0]?.hasGoldenDice}
+          />
         ))}
       </Col>
     </Row>

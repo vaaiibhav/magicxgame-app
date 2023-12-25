@@ -1,95 +1,102 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useAnimate } from "framer-motion";
-import { Row, Col } from "react-bootstrap";
 import diceImages from "../../../assets/Game1";
-const WinningAnimation = (props) => {
-  let winImage = diceImages.spades;
-  const { timer } = props;
-  if (timer === 0) animateStart();
-  const [animationStarted, setAnimationStarted] = useState(false);
+import { useGameStore, useGudGudiStore } from "../../../states/store";
+
+const WinningAnimation = () => {
+  const { timer } = useGameStore();
+  const { winDiceObj } = useGudGudiStore();
   const [scope, animate] = useAnimate();
+  const [animationStarted, setAnimationStarted] = useState(false);
+
+  const winImageSelector = (imageToDisplay) => {
+    switch (imageToDisplay) {
+      case 0:
+        return diceImages.spades;
+      case 1:
+        return diceImages.crowns;
+      case 2:
+        return diceImages.hearts;
+      case 3:
+        return diceImages.diamonds;
+      case 4:
+        return diceImages.flags;
+      case 5:
+        return diceImages.clubs;
+      default:
+        return null; // Default image or handle edge case
+    }
+  };
+
+  const renderImages = () => {
+    let images = [];
+    winDiceObj?.diceValues?.forEach((value, index) => {
+      for (let i = 0; i < value; i++) {
+        images.push(
+          <motion.img
+            key={`${index}-${i}`}
+            style={{
+              borderRadius: "20%",
+              boxShadow: winDiceObj?.hasGoldenDice
+                ? "3px 3px  gold,4px 4px black"
+                : "3px 3px  white,4px 4px black",
+              background: winDiceObj?.hasGoldenDice ? "gold" : "white",
+              border: "black 1px solid",
+            }}
+            className="dontSelect bottomWinningNumberslast10"
+            id={`winDice${index + 1}-${i + 1}`}
+            src={winImageSelector(index)}
+          />
+        );
+      }
+    });
+    return images;
+  };
+
   const animateStart = async () => {
-    console.log("animateStart:", animationStarted);
+    animationStarted;
     setAnimationStarted(true);
     await animate(
-      "#winDiceDiv",
-      { alignItems: "center" },
-      { duration: 12, type: "spring", stiffness: 50 }
+      scope.current,
+      { alignItems: "center", width: "50%", opacity: 1 },
+      { duration: 2, type: "spring", stiffness: 50 }
     );
-    await animate("#winDice1", {
-      transform: "translateY(100%)",
-      rotate: 240,
-    });
+    // await animate("#winDice1-1", { x: "-240%", y: "-210%" });
+    // await animate("#winDice1-2", { x: "-230%", y: "-230%" });
+    // await animate("#winDice1-3", { x: "-220%", y: "-250%" });
+    // await animate("#winDice1-4", { x: "-240%", y: "-130%" });
+    // await animate("#winDice1-5", { x: "-230%", y: "-120%" });
+    // await animate("#winDice1-6", { x: "-220%", y: "-110%" });
+
     setAnimationStarted(false);
-    console.log("animateEnd:", animationStarted);
   };
+
+  useEffect(() => {
+    if (timer === 1) {
+      animateStart();
+    }
+  }, [timer]);
+
   return (
     <AnimatePresence>
       <motion.div
         key="batch1"
         onClick={animateStart}
-        initial={{ opacity: 0, justifyContent: "center" }}
-        animate={{
-          alignItems: "center",
-          justifyContent: "center",
-          opacity: 1,
-          width: "100%",
-        }}
-        ref={scope}
         style={{
           position: "absolute",
+          opacity: 0.2,
           top: 0,
+          pointerEvents: "none",
+          translateX: "50%",
           height: "100%",
-          display: "flex", // Use flexbox
-          alignItems: "flex-start", // Align items to the top
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "center",
           background: "transparent",
         }}
+        ref={scope}
       >
-        <Row>
-          <Col></Col>
-          <Col>
-            <motion.div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                height: "100%",
-              }}
-              id="winDiceDiv"
-            >
-              <motion.img
-                className="dontSelect bottomWinningNumberslast10"
-                id="winDice1"
-                src={winImage}
-              />
-              <motion.img
-                id="winDice2"
-                className="dontSelect bottomWinningNumberslast10"
-                src={winImage}
-              />
-              <motion.img
-                id="winDice3"
-                className="dontSelect bottomWinningNumberslast10"
-                src={winImage}
-              />
-              <motion.img
-                id="winDice4"
-                className="dontSelect bottomWinningNumberslast10"
-                src={winImage}
-              />
-              <motion.img
-                id="winDice5"
-                className="dontSelect bottomWinningNumberslast10"
-                src={winImage}
-              />
-              <motion.img
-                id="winDice6"
-                className="dontSelect bottomWinningNumberslast10"
-                src={winImage}
-              />
-            </motion.div>
-          </Col>
-          <Col></Col>
-        </Row>
+        {renderImages()}
       </motion.div>
     </AnimatePresence>
   );
