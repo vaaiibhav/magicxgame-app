@@ -1,4 +1,5 @@
 import { create } from "zustand";
+
 const useLoginStore = create((set) => ({
   token: "",
   storeToken: (newToken) => set((state) => ({ token: newToken })),
@@ -12,7 +13,7 @@ const useLoginStore = create((set) => ({
   reduceBalance: (reduceBalanceBy) => set((state) => balance - reduceBalanceBy),
 }));
 const useGudGudiStore = create((set) => ({
-  winning: 0,
+  _winning: 0,
   blinkTake: false,
   lastTenValues: [{}],
   points: Number(useLoginStore.getState().balance),
@@ -32,10 +33,10 @@ const useGudGudiStore = create((set) => ({
     slot4Bet: 0,
     slot5Bet: 0,
   },
-  // clonePreviousBets: () =>
-  //   set((state) => {
-  //     state.previousBets = Object.assign(state.slotsBets);
-  //   }),
+  betTotal: 0,
+  coinValue: 10,
+  winDiceObj: {},
+  rollDices: false,
   setPreviousBets: (currentBets) => {
     set({ previousBets: currentBets });
   },
@@ -43,7 +44,7 @@ const useGudGudiStore = create((set) => ({
     set({ lastTenValues: newlastTenValues }),
   setblinkTake: (newblinkTake) => set({ blinkTake: newblinkTake }),
   setPoints: (newPoints) => set({ points: newPoints }),
-  setWinning: (newWinning) => set({ winning: newWinning }),
+  setWinning: (newWinning) => set({ _winning: newWinning }),
   setSlotsBets: (slotToBet) => {
     set((state) => {
       const updatedSlotBets = {
@@ -82,7 +83,6 @@ const useGudGudiStore = create((set) => ({
       Object.keys(state.slotsBets).forEach((key) => {
         updatedSlotsBets[key] = 0;
       });
-
       // Update the state with new values
       return {
         ...state, // Maintain other state values
@@ -108,10 +108,6 @@ const useGudGudiStore = create((set) => ({
         betTotal: newBetTotal * 2, // Double the new total bet
       };
     }),
-  betTotal: 0,
-  coinValue: 10,
-  winDiceObj: {},
-  rollDices: false,
   setRollDices: (diceState) => {
     set({ rollDices: diceState });
   },

@@ -7,6 +7,7 @@ import crowns from "./Dice/crowns.png";
 import spades from "./Dice/spades.png";
 import goldDice from "./Dice/goldDice.png";
 import normalDice from "./Dice/normalDice.png";
+import bell from "./bell.png";
 const diceImages = {
   hearts,
   clubs,
@@ -16,5 +17,6 @@ const diceImages = {
   spades,
   goldDice,
   normalDice,
+  bell,
 };
 export default diceImages;

@@ -4,11 +4,13 @@ import diceImages from "../../../assets/Game1";
 import { useGameStore, useGudGudiStore } from "../../../states/store";
 
 const WinningAnimation = () => {
+  let images = [];
+  // const [animations] = useState(() => images.map(() => useAnimation()));
+
   const { timer } = useGameStore();
   const { winDiceObj } = useGudGudiStore();
   const [scope, animate] = useAnimate();
-  const [animationStarted, setAnimationStarted] = useState(false);
-
+  let imagePlacements = [];
   const winImageSelector = (imageToDisplay) => {
     switch (imageToDisplay) {
       case 0:
@@ -29,12 +31,15 @@ const WinningAnimation = () => {
   };
 
   const renderImages = () => {
-    let images = [];
+    let imagesID = 0;
     winDiceObj?.diceValues?.forEach((value, index) => {
       for (let i = 0; i < value; i++) {
+        imagesID++;
+        imagePlacements.push(index);
+        // if (imagesID === 4) images.push(<p key={`${imagesID} + ${i}`}></p>);
         images.push(
           <motion.img
-            key={`${index}-${i}`}
+            key={imagesID}
             style={{
               borderRadius: "20%",
               boxShadow: winDiceObj?.hasGoldenDice
@@ -44,7 +49,7 @@ const WinningAnimation = () => {
               border: "black 1px solid",
             }}
             className="dontSelect bottomWinningNumberslast10"
-            id={`winDice${index + 1}-${i + 1}`}
+            id={`winDice${imagesID}`}
             src={winImageSelector(index)}
           />
         );
@@ -52,30 +57,55 @@ const WinningAnimation = () => {
     });
     return images;
   };
+  const gotoEachDicePlace = (goWhere) => {
+    let animateTo = {};
+    switch (goWhere) {
+      case 0:
+        animateTo = { x: "-510%", y: "-300%" };
+        break;
+      case 1:
+        animateTo = { x: "-40%", y: "-300%" };
+        break;
+      case 2:
+        animateTo = { x: "420%", y: "-300%" };
+        break;
+      case 3:
+        animateTo = { x: "-510%", y: "300%" };
+        break;
+      case 4:
+        animateTo = { x: "-40%", y: "300%" };
+        break;
+      case 5:
+        animateTo = { x: "420%", y: "300%" };
+        break;
+
+      default:
+        break;
+    }
+    return animateTo;
+  };
 
   const animateStart = async () => {
-    animationStarted;
-    setAnimationStarted(true);
-    await animate(
-      scope.current,
-      { alignItems: "center", width: "50%", opacity: 1 },
-      { duration: 2, type: "spring", stiffness: 50 }
-    );
-    // await animate("#winDice1-1", { x: "-240%", y: "-210%" });
-    // await animate("#winDice1-2", { x: "-230%", y: "-230%" });
-    // await animate("#winDice1-3", { x: "-220%", y: "-250%" });
-    // await animate("#winDice1-4", { x: "-240%", y: "-130%" });
-    // await animate("#winDice1-5", { x: "-230%", y: "-120%" });
-    // await animate("#winDice1-6", { x: "-220%", y: "-110%" });
-
-    setAnimationStarted(false);
+    try {
+      await animate(
+        scope.current,
+        { opacity: 1 },
+        { duration: 2, type: "spring", stiffness: 50, delay: 1 }
+      );
+      await animate("#winDice1", gotoEachDicePlace(imagePlacements[0]));
+      await animate("#winDice2", gotoEachDicePlace(imagePlacements[1]));
+      await animate("#winDice3", gotoEachDicePlace(imagePlacements[2]));
+      await animate("#winDice4", gotoEachDicePlace(imagePlacements[3]));
+      await animate("#winDice5", gotoEachDicePlace(imagePlacements[4]));
+      await animate("#winDice6", gotoEachDicePlace(imagePlacements[5]));
+    } catch (error) {
+      console.error("error:", error);
+    }
   };
 
   useEffect(() => {
-    if (timer === 1) {
-      animateStart();
-    }
-  }, [timer]);
+    animateStart();
+  }, []);
 
   return (
     <AnimatePresence>
@@ -84,13 +114,13 @@ const WinningAnimation = () => {
         onClick={animateStart}
         style={{
           position: "absolute",
-          opacity: 0.2,
-          top: 0,
+          opacity: 0,
           pointerEvents: "none",
-          translateX: "50%",
           height: "100%",
-          display: "flex",
-          alignItems: "flex-start",
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateRows: "repeat(3, 1fr)",
+          gap: "1px",
           justifyContent: "center",
           background: "transparent",
         }}

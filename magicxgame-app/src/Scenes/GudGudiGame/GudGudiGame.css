@@ -42,7 +42,7 @@
   background: no-repeat center / contain
     url("../../assets/Game1/lady-cropped.png");
 }
-.bell {
+/* .bell {
   content: " ";
   position: absolute;
   top: 0;
@@ -52,7 +52,7 @@
   margin-right: 32%;
   background-color: yellow;
   background: no-repeat center / contain url("../../assets/Game1/bell.png");
-}
+} */
 .bottomDisplay {
   display: flex;
   flex: 0.7;
@@ -80,11 +80,10 @@
   flex: 0.8;
 }
 /* Middle Displays */
-.middleDisplayTopRow {
-  flex: 1;
-}
+
 .middleDisplayCenterRow {
-  flex: 6.2;
+  flex: 5.6;
+  padding-top: 3%;
   display: flex;
   flex-flow: column wrap;
 }
@@ -100,7 +99,7 @@
 .tableAboveRow {
   display: flex;
   height: 100%;
-  padding: 3.5% 4% 0 4%;
+  padding: 0.5% 4% 2% 4%;
   height: 95%;
 }
 .tableAboveRow > * {
@@ -127,13 +126,19 @@
 }
 .bottomWinningNumberslast10 {
   /* background: white; */
+  position: relative;
   /* border: black 1px solid; */
   padding: 2px;
   margin: 0px 5px;
-  width: 50px;
-  height: 50px;
+  width: 3%;
+  height: 6%;
 }
-
+.bellDisplay {
+  position: relative;
+  height: 10%;
+  width: 5%;
+  margin-left: 46%;
+}
 .coin10Btn {
   background-image: url("../../assets/Game1/Coin/coin10.png");
 }
@@ -190,11 +195,29 @@
 .actionBtnsBlink {
   width: 80%;
   height: 30%;
-  background-color: transparent;
+  /* background-color: yellow; */
   border-color: red;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  -webkit-animation: take-BlinkAnimation 0.5s steps(2, start) infinite forwards;
+  animation: take-BlinkAnimation 0.5s steps(2, start) infinite forwards;
+}
+@-webkit-keyframes take-BlinkAnimation {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: yellow;
+  }
+}
+@keyframes take-BlinkAnimation {
+  0% {
+    background-color: red;
+  }
+  100% {
+    background-color: yellow;
+  }
 }
 .leftActionBtns {
   position: relative;
@@ -206,6 +229,7 @@
 }
 .middleDisplayCenterBelowRow {
   flex: 6;
+  padding-bottom: 3%;
 }
 .middleDisplayBottomRow {
   flex: 1;

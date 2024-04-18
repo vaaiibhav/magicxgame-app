@@ -21,11 +21,11 @@ const useSocketManager = () => {
     allowSendData,
     setAllowSendData,
     gameID,
+    socketInstance,
     setSocketInstance,
   } = useGameStore();
   const {
     setCancelAllBets,
-    clonePreviousBets,
     previousBets,
     slotsBets,
     betTotal,
@@ -33,6 +33,7 @@ const useSocketManager = () => {
     setlastTenValues,
     setblinkTake,
     setWinDiceObj,
+    _winning,
     setWinning,
     setPreviousBets,
   } = useGudGudiStore();
@@ -72,17 +73,15 @@ const useSocketManager = () => {
       }
       if (countDowner === 10) {
         setAllowBets(false);
-        setPreviousBets(slotsBets);
+        // setPreviousBets(slotsBets);
         // clonePreviousBets();
       }
       if (countDowner === 11) {
-        playlast10Seconds.pause();
-        playlast10Seconds.currentTime = 0;
+        // playlast10Seconds.pause();
+        // playlast10Seconds.currentTime = 0;
       }
-      if (countDowner === 5 && gameID > 0) {
-        slotsBets.totalBet = betTotal;
+      if (countDowner === 5) {
         emitGudGudiBets();
-        // socket.emit("gudGudiBets", slotsBets);
       }
       if (countDowner === 58) {
         setAllowBets(true);
@@ -106,7 +105,6 @@ const useSocketManager = () => {
       setGameID(getGameID);
     }
     function onGudGudiWinningNumbers(winningNumberObject) {
-      console.log("winningNumberObject:", winningNumberObject);
       const winFromThisGame = gudGudiPointsCalculator(
         winningNumberObject,
         slotsBets
@@ -116,20 +114,18 @@ const useSocketManager = () => {
       setWinDiceObj(winningNumberObject);
       setWinning(winFromThisGame);
     }
-    function emitGudGudiBets() {
-      if (!allowSendData) return setServerMessage("Please Take to Proceed");
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
+    const emitGudGudiBets = () => {
       slotsBets.totalBet = betTotal;
-      console.log("slotsBets:", slotsBets);
-      socket.emit("gudGudiBets", slotsBets, (callBack) => {
-        console.log("callBack:", callBack);
-      });
-
-      socket.emit("getMyDetails", "", (balanceReply) => {
-        setBalance(Number(balanceReply));
-        setServerMessage("Please Wait untill Next Game");
-        setSocketInstance(socket);
-      });
-    }
+      socket.emit("gudGudiBets", slotsBets);
+      setAllowBets(false);
+      return setServerMessage("Bets Saved!");
+    };
+    socket.emit("getMyDetails", "", (balanceReply) => {
+      setBalance(Number(balanceReply));
+      setServerMessage("Please Wait untill Next Game");
+      setSocketInstance(socket);
+    });
     function calculateAmount(hit, amount) {
       if (hit === 0) return 0;
       else if (hit === 1) return amount / 2;
@@ -150,6 +146,7 @@ const useSocketManager = () => {
         );
         winPoints = winPoints + amountOnSlot[index];
       }
+      console.log("amountOnSlot:", amountOnSlot);
       return winPoints;
     }
     function gudGudiLastWinning(dataValues) {
@@ -171,8 +168,8 @@ const useSocketManager = () => {
     return () => {
       socket.off("connect", onConnect);
       socket.off("disconnect", onDisconnect);
-      socket.off("gameEvents", onGameEvent);
-      //   socket.off("gameTimer", onGameTimer);
+      // socket.off("gameEvents", onGameEvent);
+      // socket.off("gameTimer", onGameTimer);
     };
   }, []);
 };

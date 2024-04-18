@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Col, Row, Image } from "react-bootstrap";
 import BottomWinningNumbers from "./BottomWinningNumbers";
 
 const Last10Bottom = (props) => {
   const { lastTenValues } = props;
+  let SingleLast10 = [];
   const convertedLast10 = () => {
     try {
       // Ensure lastTenValues is defined and has at least one element
-      if (!lastTenValues || lastTenValues.length === 0) {
-        throw new Error("No data found in lastTenValues");
-      }
       let convertedLast1 = [];
       let winsForSlots = [
         lastTenValues[0].slot0Winning,
@@ -32,7 +30,11 @@ const Last10Bottom = (props) => {
       return []; // Return an empty array if an error occurs
     }
   };
-  const SingleLast10 = convertedLast10();
+  let counterLast10 = 0;
+  useEffect(() => {
+    SingleLast10 = convertedLast10();
+    counterLast10++;
+  }, [lastTenValues]);
   return (
     <Row className="middleDisplayBottomRow dontSelect">
       <Col>

@@ -3,8 +3,14 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import { useGudGudiStore, useGameStore } from "../../../../states/store";
 
 const LeftSideButtons = () => {
-  const { setCancelAllBets, setPoints, winning, points, setBlinkTake } =
-    useGudGudiStore();
+  const {
+    setCancelAllBets,
+    setServerMessage,
+    setPoints,
+    winning,
+    points,
+    setBlinkTake,
+  } = useGudGudiStore();
   const { allowBets, allowSendData, setAllowSendData, blinkTake } =
     useGameStore();
 
@@ -43,7 +49,7 @@ const LeftSideButtons = () => {
         className={
           blinkTake
             ? "takeBtn actionBtns actionBtnsBlink"
-            : "takeBtn actionBtns"
+            : "takeBtn actionBtns "
         }
       ></Button>
     </Col>

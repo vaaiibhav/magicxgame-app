@@ -10,13 +10,12 @@ import axios from "axios";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import denyMinus from "../../utils/denyMinus";
 import { useLoginStore } from "../../states/store";
-import ConnectionManager from "../../socket/ConnectionManager";
 
 const Login = () => {
   const navigate = useNavigate();
   const [loginCred, setLoginCred] = useState({
-    loginID: "",
-    loginPD: "",
+    loginID: "10010000",
+    loginPD: "vaaiibhav",
   });
   const { storeToken } = useLoginStore();
   const handle = useFullScreenHandle();
@@ -57,7 +56,6 @@ const Login = () => {
                   placeholder="Login ID"
                   name="loginID"
                   id="loginID"
-                  value="1234"
                   min="0"
                   onKeyDown={denyMinus}
                   required
@@ -72,7 +70,6 @@ const Login = () => {
                   }}
                   type="password"
                   required
-                  value="vaaiibhav"
                   placeholder="Password"
                   name="loginPD"
                   id="loginPD"
