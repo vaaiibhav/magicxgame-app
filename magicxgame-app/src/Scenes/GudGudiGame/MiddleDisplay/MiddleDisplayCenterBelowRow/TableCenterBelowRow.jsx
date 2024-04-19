@@ -4,11 +4,12 @@ import { useGudGudiStore, useGameStore } from "../../../../states/store";
 import coinAudio from "../../../../assets/Audio/coinAudio.mp3";
 
 const TableCenterBelowRow = () => {
-  const { setServerMessage, allowBets } = useGameStore();
+  const { setServerMessage, allowBets, allowSendData } = useGameStore();
   const { slotsBets, setSlotsBets, points, coinValue, lastTenValues } =
     useGudGudiStore();
   const betOnSlot = (betonSlotNo) => {
     if (points < coinValue) return setServerMessage("Not Enough Coins");
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (!allowBets) return setServerMessage("Times UP!");
     new Audio(coinAudio).play();
     setSlotsBets(betonSlotNo);

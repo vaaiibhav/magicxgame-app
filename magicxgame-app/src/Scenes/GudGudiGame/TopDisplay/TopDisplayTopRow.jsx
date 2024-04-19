@@ -7,7 +7,7 @@ import {
 } from "../../../states/store.js";
 import Timestamp from "react-timestamp";
 const TopDisplayTopRow = () => {
-  const { winning, points } = useGudGudiStore();
+  const { _winning, points } = useGudGudiStore();
   const { gameDateTime, gameID, timer } = useGameStore();
   return (
     <Row className="topDisplayTopRow">
@@ -19,7 +19,7 @@ const TopDisplayTopRow = () => {
       </Col>
       <Col md={2} className="emptyFrame dontSelect topDisplayTopRowFrame"></Col>
       <Col md={2} className="winningFrame dontSelect topDisplayTopRowFrame">
-        {winning > 0 ? winning : "-"}
+        {_winning > 0 ? _winning : "-"}
       </Col>
       <Col md={2} className="timeFrame dontSelect topDisplayTopRowFrame">
         <Timestamp date={gameDateTime} />

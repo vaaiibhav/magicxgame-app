@@ -7,7 +7,6 @@ const WinningAnimation = () => {
   let images = [];
   // const [animations] = useState(() => images.map(() => useAnimation()));
 
-  const { timer } = useGameStore();
   const { winDiceObj } = useGudGudiStore();
   const [scope, animate] = useAnimate();
   let imagePlacements = [];
@@ -32,6 +31,7 @@ const WinningAnimation = () => {
 
   const renderImages = () => {
     let imagesID = 0;
+    console.log("winDiceObj:", winDiceObj);
     winDiceObj?.diceValues?.forEach((value, index) => {
       for (let i = 0; i < value; i++) {
         imagesID++;
@@ -92,6 +92,7 @@ const WinningAnimation = () => {
         { opacity: 1 },
         { duration: 2, type: "spring", stiffness: 50, delay: 1 }
       );
+
       await animate("#winDice1", gotoEachDicePlace(imagePlacements[0]));
       await animate("#winDice2", gotoEachDicePlace(imagePlacements[1]));
       await animate("#winDice3", gotoEachDicePlace(imagePlacements[2]));
@@ -117,9 +118,7 @@ const WinningAnimation = () => {
           opacity: 0,
           pointerEvents: "none",
           height: "100%",
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gridTemplateRows: "repeat(3, 1fr)",
+          display: "flex",
           gap: "1px",
           justifyContent: "center",
           background: "transparent",

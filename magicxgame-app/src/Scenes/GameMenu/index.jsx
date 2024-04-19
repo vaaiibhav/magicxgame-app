@@ -1,25 +1,34 @@
 import React from "react";
 import MenuCards from "./MenuCards";
 import "./GameMenu.css";
-import gameLayout from "../../assets/Game1/jhandiMundaThumbnail.jpg";
+import jhandiMundaImage from "../../assets/Game1/jhandiMundaThumbnail.jpg";
+import fighterWheelImage from "../../assets/Game2/fighterWheelThmbnail.jpg";
 
 const GameMenu = () => {
   const cardData = [
     {
       id: 1,
       title: "GudGudi Game",
-      imageUrl: gameLayout,
+      imageUrl: jhandiMundaImage,
       navigate: "/gudigudi",
     },
     {
       id: 2,
-      title: "Card 2",
-      imageUrl: gameLayout,
+      title: "Fighter Wheel",
+      imageUrl: fighterWheelImage,
+      navigate: "/fighterwheel",
     },
     {
       id: 3,
-      title: "Card 3",
-      imageUrl: gameLayout,
+      title: "Fighter Wheel 95",
+      imageUrl: jhandiMundaImage,
+      navigate: "/fighterwheel95",
+    },
+    {
+      id: 4,
+      title: "Lucky Card",
+      imageUrl: fighterWheelImage,
+      navigate: "/luckycard",
     },
   ];
   return (

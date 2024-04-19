@@ -16,7 +16,7 @@ import {
 const MiddleDisplay = () => {
   const { timer } = useGameStore();
   const { bell } = diceImages;
-  const { lastTenValues } = useGudGudiStore();
+  const { lastTenValues, allowSendData } = useGudGudiStore();
   const [scope, animate] = useAnimate();
   const controls = useAnimation();
 
@@ -42,8 +42,10 @@ const MiddleDisplay = () => {
 
   return (
     <Row className="middleDisplay">
-      {/* {(timer < 3 || timer > 55) && <WinningAnimation />} */}
-      {<WinningAnimation />}
+      {(timer < 3 || timer > 55 || allowSendData == true) && (
+        <WinningAnimation />
+      )}
+      {/* {<WinningAnimation />} */}
       <motion.img
         id="bellImg"
         src={bell}

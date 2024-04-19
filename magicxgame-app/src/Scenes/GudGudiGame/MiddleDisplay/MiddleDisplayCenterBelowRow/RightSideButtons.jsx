@@ -10,8 +10,10 @@ const RightSideButtons = () => {
     setServerMessage,
     countDowner,
     setAllowBets,
+    allowSendData,
   } = useGameStore();
   const emitGudGudiBets = () => {
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (betTotal > 1) {
       slotsBets.totalBet = betTotal;
       socketInstance.emit("gudGudiBets", slotsBets);
@@ -21,17 +23,21 @@ const RightSideButtons = () => {
     return setServerMessage("No Bets to Save!");
   };
   const doubleBetsBtn = () => {
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (!allowBets) return setServerMessage("Times UP!");
     setBetDouble();
   };
   const previousBetBtn = () => {
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (!allowBets) return setServerMessage("Times UP!");
     setPreviousBets();
   };
   const betOKBtn = () => {
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (!allowBets) return setServerMessage("Times UP!");
     slotsBets.totalBet = betTotal;
     emitGudGudiBets();
+    return setServerMessage("Bets Saved!");
   };
   return (
     <Col md={2} className="sideButtons rightActionBtns">

@@ -14,8 +14,8 @@ import { useLoginStore } from "../../states/store";
 const Login = () => {
   const navigate = useNavigate();
   const [loginCred, setLoginCred] = useState({
-    loginID: "10010000",
-    loginPD: "vaaiibhav",
+    loginID: "",
+    loginPD: "",
   });
   const { storeToken } = useLoginStore();
   const handle = useFullScreenHandle();
@@ -28,15 +28,18 @@ const Login = () => {
         .post(serverURL + "/login/login-game/", loginCred)
         .then((response) => response)
         .catch((error) => error);
+      console.log("userLogin:", userLogin);
       if (userLogin?.data?.token) {
         storeToken(userLogin?.data?.token);
         toast.success("Login Successful");
         localStorage.removeItem("blueFighter.authToken");
         localStorage.setItem("blueFighter.authToken", userLogin?.data?.token);
         navigate("/game-menu");
+      } else {
+        toast.error(userLogin?.response?.data?.error);
       }
     } catch (error) {
-      console.error("error:", error);
+      console.log("error:", error);
       if (error) toast.error(error?.response?.data?.error);
     }
   };

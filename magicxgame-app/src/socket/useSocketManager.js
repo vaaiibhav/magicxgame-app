@@ -25,7 +25,6 @@ const useSocketManager = () => {
     setSocketInstance,
   } = useGameStore();
   const {
-    setCancelAllBets,
     previousBets,
     slotsBets,
     betTotal,
@@ -105,16 +104,18 @@ const useSocketManager = () => {
       setGameID(getGameID);
     }
     function onGudGudiWinningNumbers(winningNumberObject) {
+      if (!allowSendData) return setServerMessage("Please Take to Proceed");
       const winFromThisGame = gudGudiPointsCalculator(
         winningNumberObject,
         slotsBets
       );
-      if (winFromThisGame > 0) setblinkTake(true);
-      setAllowSendData(false);
-      setWinDiceObj(winningNumberObject);
-      setWinning(winFromThisGame);
+      if (winFromThisGame > 0) {
+        setblinkTake(true);
+        setAllowSendData(false);
+        setWinDiceObj(winningNumberObject);
+        setWinning(winFromThisGame);
+      }
     }
-    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     const emitGudGudiBets = () => {
       slotsBets.totalBet = betTotal;
       socket.emit("gudGudiBets", slotsBets);
@@ -146,7 +147,6 @@ const useSocketManager = () => {
         );
         winPoints = winPoints + amountOnSlot[index];
       }
-      console.log("amountOnSlot:", amountOnSlot);
       return winPoints;
     }
     function gudGudiLastWinning(dataValues) {
@@ -159,7 +159,6 @@ const useSocketManager = () => {
     socket.on("sendUserBalance", onUserBalance);
     socket.on("connect_error", onConnnectError);
     socket.on("serverMessage", onServerMessage);
-    socket.on("serverMessage", onServerMessage);
     socket.on("gameDate", onGameDate);
     socket.on("gameID", onGameID);
     socket.on("gudGudiWinningNumbers", onGudGudiWinningNumbers);
@@ -171,7 +170,7 @@ const useSocketManager = () => {
       // socket.off("gameEvents", onGameEvent);
       // socket.off("gameTimer", onGameTimer);
     };
-  }, []);
+  }, [slotsBets.totalBet]);
 };
 
 export default useSocketManager;

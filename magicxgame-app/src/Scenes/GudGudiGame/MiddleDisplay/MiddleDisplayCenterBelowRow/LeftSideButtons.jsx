@@ -5,29 +5,33 @@ import { useGudGudiStore, useGameStore } from "../../../../states/store";
 const LeftSideButtons = () => {
   const {
     setCancelAllBets,
-    setServerMessage,
     setPoints,
-    winning,
+    _winning,
+    setWinning,
     points,
-    setBlinkTake,
+    blinkTake,
+    setblinkTake,
   } = useGudGudiStore();
-  const { allowBets, allowSendData, setAllowSendData, blinkTake } =
+  const { allowBets, allowSendData, setAllowSendData, setServerMessage } =
     useGameStore();
 
   const cancelAllBtn = () => {
     if (!allowBets) return setServerMessage("Times UP!");
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     setCancelAllBets();
   };
   const takeBtn = () => {
     if (!allowBets) return setServerMessage("Times UP!");
     if (!allowSendData) {
-      setAllowSendData(!allowSendData);
-      setPoints(winning + points);
-      setBlinkTake(false);
+      setAllowSendData(true);
+      setPoints(_winning + points);
+      setblinkTake(false);
+      setWinning(0);
       setCancelAllBets();
     }
   };
   const specificCancelBtn = () => {
+    if (!allowSendData) return setServerMessage("Please Take to Proceed");
     if (!allowBets) return setServerMessage("Times UP!");
   };
 

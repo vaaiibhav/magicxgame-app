@@ -1,10 +1,11 @@
 .card-title {
-  font-size: 2em;
+  font-size: 1.5em;
+  color: white;
 }
 .card {
-  background-color: #1e517b;
-  margin: 3rem;
-  /* padding: 2px; */
+  background-color: #0d263b;
+  margin: 1rem;
+  padding: 2px;
   /* border: 1px solid black; */
   max-width: 300px;
   cursor: pointer;

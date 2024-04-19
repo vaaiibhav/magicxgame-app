@@ -75,6 +75,7 @@ const useGudGudiStore = create((set) => ({
       };
     });
   },
+
   // Your setCancelAllBets function
   setCancelAllBets: () =>
     set((state) => {
@@ -133,8 +134,7 @@ const useGameStore = create((set) => ({
     set({ socketInstance: newSocketInstance }),
   setGameID: (newGameID) => set({ gameID: newGameID }),
   setAllowBets: (setBets) => set({ allowBets: setBets }),
-  setAllowSendData: (setAllowSendData) =>
-    set({ allowSendData: setAllowSendData }),
+  setAllowSendData: (setAllower) => set({ allowSendData: setAllower }),
   setServerMessage: (message) => set({ serverMessage: message }),
   setTimer: (newTime) => {
     set({ timer: newTime });
