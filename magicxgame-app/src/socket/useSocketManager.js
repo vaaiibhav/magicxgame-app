@@ -170,7 +170,7 @@ const useSocketManager = () => {
       // socket.off("gameEvents", onGameEvent);
       // socket.off("gameTimer", onGameTimer);
     };
-  }, [slotsBets.totalBet]);
+  }, [slotsBets.totalBet, allowSendData]);
 };
 
 export default useSocketManager;
