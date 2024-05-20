@@ -1,0 +1,287 @@
+.fighterWheelBG {
+  width: 100%;
+  height: 100%;
+  background: no-repeat center / cover url("../../assets/Game2/BG.jpg");
+  flex-direction: column;
+}
+.row {
+  color: white;
+}
+.topDisplayRow {
+  flex: 2;
+}
+.gameContainer {
+  display: flex;
+  flex-direction: column;
+}
+.middleDisplayRow {
+  flex: 10;
+  margin-top: 1%;
+  display: flex;
+}
+.bottomDisplayRow {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  z-index: 4;
+}
+.last10Data {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/Last10Data.png");
+}
+.rightBtnsGrid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-row: auto auto;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.rightBtns {
+  height: 50%;
+}
+.pointLabel {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/Points.png");
+}
+.timerLabel {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/Timer.png");
+}
+.winningLabel {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/Winning.png");
+}
+.gameLabel {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/GameID.png");
+}
+.dateTimeLabel {
+  background: no-repeat center / contain
+    url("../../assets/Game2/TopScreen/DateTime.png");
+}
+.topLabels {
+  width: 100%;
+  padding-top: 2%;
+  height: 100%;
+  display: block;
+  text-align: center;
+  align-content: center;
+  font-weight: bold;
+}
+.centerView {
+  display: flex;
+  flex: 6;
+}
+.leftView {
+  display: flex;
+  flex: 3;
+  flex-direction: column;
+}
+.rightView {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+
+.coinBox {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+}
+.coinBox1 {
+  flex: 1;
+}
+.coinBox2 {
+  flex: 1;
+}
+.leftLabels {
+  flex: 4;
+  text-align: center;
+}
+.coinsButtons {
+  height: 80%;
+  width: 25%;
+  margin-right: 5%;
+  background-color: transparent;
+  border-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.coin10Btn {
+  background-image: url("../../assets/Game2/Coin/coin10.png");
+}
+.coin50Btn {
+  background-image: url("../../assets/Game2/Coin/coin50.png");
+}
+.coin100Btn {
+  background-image: url("../../assets/Game2/Coin/coin100.png");
+}
+.coin500Btn {
+  background-image: url("../../assets/Game2/Coin/coin500.png");
+}
+.coin1000Btn {
+  background-image: url("../../assets/Game2/Coin/coin1K.png");
+}
+.coin5000Btn {
+  background-image: url("../../assets/Game2/Coin/coin5K.png");
+}
+.takeBtn {
+  width: 60%;
+  height: 30%;
+  background: url("/src/assets/Game2/Button/Take.png") no-repeat center /
+    contain;
+}
+.cancelBtn {
+  background: url("/src/assets/Game2/Button/Cancel.png") no-repeat center /
+    contain;
+}
+.previousBetBtn {
+  background: url("/src/assets/Game2/Button/previousBet.png") no-repeat center /
+    contain;
+}
+.specificCancelBtn {
+  background: url("/src/assets/Game2/Button/specificCancel.png") no-repeat
+    center / contain;
+}
+.betOKBtn {
+  background: url("/src/assets/Game2/Button/betOk.png") no-repeat center /
+    contain;
+}
+.betTotalLabel {
+  width: 60%;
+  height: 35%;
+  padding-top: 8%;
+  font-weight: bold;
+  align-content: center;
+  background: url("/src/assets/Game2/Button/betTotal.png") no-repeat center /
+    contain;
+}
+.WheelDiv {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  margin: 2%;
+  background: url("/src/assets/Game2/WheelDiv/wheelBg.png") no-repeat center /
+    contain;
+}
+.wheelFg {
+  flex: 10;
+  align-content: center;
+  position: relative;
+  justify-items: center;
+  text-align: center;
+}
+.wheelEmpty {
+  flex: 1;
+}
+.spinWheel {
+  height: 80%;
+  width: 90%;
+}
+.wheelFixer {
+  flex: 2;
+  /* background: url("/src/assets/Game2/lady.png") no-repeat center / contain; */
+  z-index: 2;
+}
+.ladySpinner {
+  position: absolute;
+  height: 150px;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+  width: 150px;
+  background: url("/src/assets/Game2/lady.png") no-repeat center / contain;
+}
+.labelBets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-weight: bold;
+  background: url("/src/assets/Game2/Bottom/betScreen.png") no-repeat center /
+    contain;
+}
+.wheelCrown {
+  position: absolute;
+  height: 10%;
+  width: 8%;
+  margin-top: -1%;
+  z-index: 4;
+}
+.bottomLabelsRow {
+  display: flex;
+  flex: 3;
+  flex-direction: row;
+}
+.bottomButtonsRow {
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+}
+.bottomCoinButtons1 {
+  background: url("/src/assets/Game2/Numbers/Number1.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons2 {
+  background: url("/src/assets/Game2/Numbers/Number2.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons3 {
+  background: url("/src/assets/Game2/Numbers/Number3.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons4 {
+  background: url("/src/assets/Game2/Numbers/Number4.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons5 {
+  background: url("/src/assets/Game2/Numbers/Number5.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons6 {
+  background: url("/src/assets/Game2/Numbers/Number6.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons7 {
+  background: url("/src/assets/Game2/Numbers/Number7.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons8 {
+  background: url("/src/assets/Game2/Numbers/Number8.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons9 {
+  background: url("/src/assets/Game2/Numbers/Number9.png") no-repeat center /
+    contain;
+}
+.bottomCoinButtons0 {
+  background: url("/src/assets/Game2/Numbers/Number0.png") no-repeat center /
+    contain;
+}
+.bottomBetCoins {
+  height: 90%;
+  width: 90%;
+}
+.mostBottomDisplay {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-content: center;
+  justify-content: flex-start;
+}
+.mostBottomCol {
+  display: flex;
+  justify-content: center;
+}
+.bottomStrip {
+  background: url("/src/assets/Game2/Bottom/bottomStrip.png") no-repeat center /
+    contain;
+}
+.exitBtn {
+  background: url("/src/assets/Game2/Bottom/Exit.png") no-repeat center /
+    contain;
+}
