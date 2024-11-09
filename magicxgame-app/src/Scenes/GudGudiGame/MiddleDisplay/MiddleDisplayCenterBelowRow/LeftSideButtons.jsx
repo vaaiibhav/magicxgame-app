@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { useGudGudiStore, useGameStore } from "../../../../states/store";
+import styles from "../../gudigudigame.module.css";
 
 const LeftSideButtons = () => {
   const {
@@ -36,15 +37,15 @@ const LeftSideButtons = () => {
   };
 
   return (
-    <Col md={2} className="sideButtons leftActionBtns">
+    <Col md={2} className={`${styles.sideButtons} ${styles.leftActionBtns}`}>
       <Button
         variant="danger"
         onClick={cancelAllBtn}
-        className="cancelAllBtn actionBtns"
+        className={`${styles.cancelAllBtn} ${styles.actionBtns}`}
       ></Button>
       <Button
         variant="danger"
-        className="specificCancelBtn actionBtns"
+        className={`${styles.specificCancelBtn} ${styles.actionBtns}`}
         onClick={specificCancelBtn}
       ></Button>
       <Button
@@ -52,8 +53,8 @@ const LeftSideButtons = () => {
         onClick={takeBtn}
         className={
           blinkTake
-            ? "takeBtn actionBtns actionBtnsBlink"
-            : "takeBtn actionBtns "
+            ? `${styles.takeBtn} ${styles.actionBtns} ${styles.actionBtnsBlink}`
+            : `${styles.takeBtn} ${styles.actionBtns}`
         }
       ></Button>
     </Col>

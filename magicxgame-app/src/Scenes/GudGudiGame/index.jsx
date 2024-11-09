@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import "./GudGudiGame.css";
+import styles from "./gudigudigame.module.css";
 import TopDisplay from "./TopDisplay";
 import MiddleDisplay from "./MiddleDisplay";
 import BottomDisplay from "./BottomDisplay";
@@ -10,7 +10,7 @@ const GudGudiGame = () => {
   const socketManager = useSocketManager();
 
   return (
-    <Container fluid className="gameLayout">
+    <Container fluid className={styles.gameLayout}>
       <TopDisplay />
       <MiddleDisplay />
       <BottomDisplay />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, useAnimate } from "framer-motion";
 import diceImages from "../../../assets/Game1";
 import { useGameStore, useGudGudiStore } from "../../../states/store";
+import styles from "../gudigudigame.module.css";
 
 const WinningAnimation = () => {
   let images = [];
@@ -48,7 +49,7 @@ const WinningAnimation = () => {
               background: winDiceObj?.hasGoldenDice ? "gold" : "white",
               border: "black 1px solid",
             }}
-            className="dontSelect bottomWinningNumberslast10"
+            className={`${styles.dontSelect} ${styles.bottomWinningNumberslast10}`}
             id={`winDice${imagesID}`}
             src={winImageSelector(index)}
           />

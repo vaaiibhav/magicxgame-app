@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 import diceImages from "../../../assets/Game1";
-
+import styles from "../gudigudigame.module.css";
 const BottomWinningNumbers = (props) => {
   const { hasGoldenDice, imageToDisplay } = props;
   let winImage;
@@ -29,7 +29,7 @@ const BottomWinningNumbers = (props) => {
   }
   return (
     <Image
-      className="dontSelect bottomWinningNumberslast10"
+      className={`${styles.dontSelect} ${styles.bottomWinningNumberslast10}`}
       src={winImage}
       rounded
       style={{

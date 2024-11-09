@@ -6,6 +6,7 @@ import WinningAnimation from "./WinningAnimation";
 import { useGameStore, useGudGudiStore } from "../../../states/store";
 import Last10Bottom from "./Last10Bottom";
 import diceImages from "../../../assets/Game1";
+import styles from "../gudigudigame.module.css";
 import {
   motion,
   AnimatePresence,
@@ -41,7 +42,7 @@ const MiddleDisplay = () => {
   };
 
   return (
-    <Row className="middleDisplay">
+    <Row className={styles.middleDisplay}>
       {(timer < 3 || timer > 55 || allowSendData == true) && (
         <WinningAnimation />
       )}
@@ -49,7 +50,7 @@ const MiddleDisplay = () => {
       <motion.img
         id="bellImg"
         src={bell}
-        className="bellDisplay"
+        className={styles.bellDisplay}
         variants={variants}
         animate={controls}
       />

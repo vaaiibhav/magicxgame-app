@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Col, Row, Image } from "react-bootstrap";
 import BottomWinningNumbers from "./BottomWinningNumbers";
+import styles from "../gudigudigame.module.css";
 
 const Last10Bottom = (props) => {
   const { lastTenValues } = props;
@@ -36,7 +37,7 @@ const Last10Bottom = (props) => {
     counterLast10++;
   }, [lastTenValues]);
   return (
-    <Row className="middleDisplayBottomRow dontSelect">
+    <Row className={`${styles.middleDisplayBottomRow} ${styles.dontSelect}`}>
       <Col>
         {SingleLast10.map((singleLast10, index) => (
           <BottomWinningNumbers

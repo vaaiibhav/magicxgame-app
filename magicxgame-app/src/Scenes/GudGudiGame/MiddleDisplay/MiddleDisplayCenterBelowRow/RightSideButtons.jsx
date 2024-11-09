@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Col, Row, Button } from "react-bootstrap";
 import { useGameStore, useGudGudiStore } from "../../../../states/store";
+import styles from "../../gudigudigame.module.css";
+
 const RightSideButtons = () => {
   const { setBetDouble, setPreviousBets, slotsBets, betTotal } =
     useGudGudiStore();
@@ -40,21 +42,21 @@ const RightSideButtons = () => {
     return setServerMessage("Bets Saved!");
   };
   return (
-    <Col md={2} className="sideButtons rightActionBtns">
+    <Col md={2} className={`${styles.sideButtons} ${styles.rightActionBtns}`}>
       <Button
         variant="danger"
         onClick={previousBetBtn}
-        className="previousBetBtn actionBtns"
+        className={`${styles.previousBetBtn} ${styles.actionBtns}`}
       ></Button>
       <Button
         variant="danger"
         onClick={doubleBetsBtn}
-        className="betDoubleBtn actionBtns"
+        className={`${styles.betDoubleBtn} ${styles.actionBtns}`}
       ></Button>
       <Button
         variant="danger"
         onClick={betOKBtn}
-        className="betOkBtn actionBtns"
+        className={`${styles.betOkBtn} ${styles.actionBtns}`}
       ></Button>
     </Col>
   );

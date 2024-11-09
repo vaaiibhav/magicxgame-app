@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Button } from "react-bootstrap";
-import "./GameMenu.css";
+import styles from "./gamemenu.module.css";
 const MenuCards = (props) => {
   const preventDragHandler = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const MenuCards = (props) => {
       <div className="row">
         {props?.cardData?.map((card, index) => (
           <div
-            className="card col-lg-3 col-md-3 col-sm-10"
+            className={`${styles.card} col-lg-3 col-md-3 col-sm-10`}
             key={index}
             draggable="false"
             onClick={() => goToGame(card?.navigate)}
@@ -29,7 +29,12 @@ const MenuCards = (props) => {
               alt={card?.title}
             />
             <div className="card-body">
-              <p className="card-title">{card?.title}</p>
+              <p
+                className="card-title"
+                style={{ fontSize: "1.5em", color: "white" }}
+              >
+                {card?.title}
+              </p>
             </div>
           </div>
         ))}

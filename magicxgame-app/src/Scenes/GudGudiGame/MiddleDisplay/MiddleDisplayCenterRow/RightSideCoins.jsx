@@ -6,10 +6,12 @@ import {
   useSecondGame,
   useGameStore,
 } from "../../../../states/store";
+import styles from "../../gudigudigame.module.css";
+
 const RightSideCoins = () => {
   const { coinValue, setCoinValue } = useGudGudiStore();
   return (
-    <Col md={2} className="sideCoins">
+    <Col md={2} className={styles.sideCoins}>
       <Button
         variant="warning"
         onClick={() => {
@@ -17,8 +19,8 @@ const RightSideCoins = () => {
         }}
         className={
           coinValue == 500
-            ? "coin500Btn coinButtons active"
-            : "coin500Btn coinButtons"
+            ? `${styles.coin500Btn} ${styles.coinButtons} active`
+            : `${styles.coin500Btn} ${styles.coinButtons}`
         }
       ></Button>
       <Button
@@ -28,8 +30,8 @@ const RightSideCoins = () => {
         }}
         className={
           coinValue == 1000
-            ? "coin1000Btn coinButtons active"
-            : "coin1000Btn coinButtons"
+            ? `${styles.coin1000Btn} ${styles.coinButtons} active`
+            : `${styles.coin1000Btn} ${styles.coinButtons}`
         }
       ></Button>
       <Button
@@ -39,8 +41,8 @@ const RightSideCoins = () => {
         }}
         className={
           coinValue == 5000
-            ? "coin5000Btn coinButtons active"
-            : "coin5000Btn coinButtons"
+            ? `${styles.coin5000Btn} ${styles.coinButtons} active`
+            : `${styles.coin5000Btn} ${styles.coinButtons}`
         }
       ></Button>
     </Col>

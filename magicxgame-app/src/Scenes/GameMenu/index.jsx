@@ -1,8 +1,9 @@
 import React from "react";
 import MenuCards from "./MenuCards";
-import "./GameMenu.css";
+import styles from "./gamemenu.module.css";
 import jhandiMundaImage from "../../assets/Game1/jhandiMundaThumbnail.jpg";
-import fighterWheelImage from "../../assets/Game2/fighterWheelThmbnail.jpg";
+import fighterWheelImage from "../../assets/Game2/fighterWheelThumbnail.jpg";
+import fighterWheel95Image from "../../assets/Game3/fighterWheel95Thumbnail.jpg";
 
 const GameMenu = () => {
   const cardData = [
@@ -21,7 +22,7 @@ const GameMenu = () => {
     {
       id: 3,
       title: "Fighter Wheel 95",
-      imageUrl: jhandiMundaImage,
+      imageUrl: fighterWheel95Image,
       navigate: "/fighterwheel95",
     },
     {
@@ -32,7 +33,7 @@ const GameMenu = () => {
     },
   ];
   return (
-    <div className="menu-layout">
+    <div className={styles.menulayout}>
       <h1> Welcome to Blue Fighter</h1>
       <MenuCards cardData={cardData} />
     </div>

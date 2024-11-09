@@ -5,6 +5,7 @@ import {
   useGameStore,
   useLoginStore,
 } from "../../../states/store.js";
+import styles from "../gudigudigame.module.css";
 import { useNavigate } from "react-router-dom";
 const BottomDisplay = () => {
   const { betTotal } = useGudGudiStore();
@@ -14,21 +15,25 @@ const BottomDisplay = () => {
     navigateOnExit("/game-menu");
   };
   const BetTotal = () => (
-    <label className="betTotal bottomImageFrame">{betTotal}</label>
+    <label className={`${styles.betTotal} ${styles.bottomImageFrame}`}>
+      {betTotal}
+    </label>
   );
   const BetMessages = () => (
-    <label className="betMessages bottomImageFrame">{serverMessage}</label>
+    <label className={`${styles.betMessages} ${styles.bottomImageFrame}`}>
+      {serverMessage}
+    </label>
   );
   const ExitBtn = () => (
     <Button
       variant="danger"
       onClick={exittoMenu}
-      className="exitBtn bottomImageFrame"
+      className={`${styles.exitBtn} ${styles.bottomImageFrame}`}
     ></Button>
   );
   return (
-    <Row className="bottomDisplay dontSelect">
-      <Row className="bottomDisplayBottomRow">
+    <Row className={`${styles.bottomDisplay} ${styles.dontSelect}`}>
+      <Row className={styles.bottomDisplayBottomRow}>
         <Col md={2}>
           <BetTotal />
         </Col>

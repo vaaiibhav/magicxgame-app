@@ -3,6 +3,7 @@
   height: 100%;
   background: no-repeat center / cover url("../../assets/Game2/BG.jpg");
   flex-direction: column;
+  color: white;
 }
 .row {
   color: white;
@@ -164,6 +165,7 @@
   justify-items: center;
   flex-direction: column;
   margin: 2%;
+  padding: 1% 2%;
   background: url("/src/assets/Game2/WheelDiv/wheelBg.png") no-repeat center /
     contain;
 }
@@ -178,8 +180,9 @@
   flex: 1;
 }
 .spinWheel {
-  height: 80%;
-  width: 90%;
+  height: 90%;
+  width: 82%;
+  margin-bottom: 2%;
 }
 .wheelFixer {
   flex: 2;
