@@ -166,8 +166,8 @@
   flex-direction: column;
   margin: 2%;
   padding: 1% 2%;
-  background: url("/src/assets/Game2/WheelDiv/wheelBg.png") no-repeat center /
-    contain;
+  /* background: url("/src/assets/Game2/WheelDiv/wheelBg.png") no-repeat center /
+    contain; */
 }
 .wheelFg {
   flex: 10;

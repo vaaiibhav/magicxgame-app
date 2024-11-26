@@ -7,13 +7,13 @@ import useSocketManager from "../../socket/useSocketManager";
 import Timestamp from "react-timestamp";
 
 import {
-  useGudGudiStore,
+  useFighterWheel,
   useGameStore,
   useLoginStore,
 } from "../../states/store.js";
 const FighterWheel = () => {
   const connectSocket = useSocketManager;
-  const { _winning, points } = useGudGudiStore();
+  const { coinValue, setCoinValue, points, _winning } = useFighterWheel();
   const { gameDateTime, gameID, timer } = useGameStore();
   return (
     <div className={styles.fighterWheelBG}>
@@ -52,24 +52,67 @@ const FighterWheel = () => {
             <Row className={`${styles.coinBox} mt-4`}>
               <Row className={styles.coinBox1}>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin10Btn}`}
+                  // variant="warning"
+                  onClick={() => {
+                    setCoinValue(10);
+                  }}
+                  className={
+                    coinValue == 10
+                      ? `${styles.coin10Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin10Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin50Btn}`}
+                  onClick={() => {
+                    setCoinValue(50);
+                  }}
+                  className={
+                    coinValue == 50
+                      ? `${styles.coin50Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin50Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin100Btn}`}
+                  onClick={() => {
+                    setCoinValue(100);
+                  }}
+                  className={
+                    coinValue == 100
+                      ? `${styles.coin100Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin100Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
               </Row>
               <Row className={styles.coinBox2}>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin500Btn}`}
+                  onClick={() => {
+                    setCoinValue(500);
+                  }}
+                  className={
+                    coinValue == 500
+                      ? `${styles.coin500Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin500Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin1000Btn}`}
+                  onClick={() => {
+                    setCoinValue(1000);
+                  }}
+                  className={
+                    coinValue == 1000
+                      ? `${styles.coin1000Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin1000Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
                 <Button
-                  className={`${styles.coinsButtons} ${styles.coin5000Btn}`}
+                  onClick={() => {
+                    setCoinValue(5000);
+                  }}
+                  className={
+                    coinValue == 5000
+                      ? `${styles.coin5000Btn} ${styles.coinsButtons} active`
+                      : `${styles.coin5000Btn} ${styles.coinsButtons}`
+                  }
                 ></Button>
               </Row>
             </Row>

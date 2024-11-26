@@ -12,6 +12,15 @@ const useLoginStore = create((set) => ({
   },
   reduceBalance: (reduceBalanceBy) => set((state) => balance - reduceBalanceBy),
 }));
+const useFighterWheel = create((set) => ({
+  points: Number(useLoginStore.getState().balance),
+  _winning: 0,
+  coinValue: 10,
+  setCoinValue: (newValue) =>
+    set({
+      coinValue: newValue,
+    }),
+}));
 const useGudGudiStore = create((set) => ({
   _winning: 0,
   blinkTake: false,
@@ -147,4 +156,10 @@ const useSecondGame = create((set) => ({
   increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
   removeAllBears: () => set({ bears: 0 }),
 }));
-export { useGudGudiStore, useLoginStore, useSecondGame, useGameStore };
+export {
+  useGudGudiStore,
+  useLoginStore,
+  useSecondGame,
+  useFighterWheel,
+  useGameStore,
+};
